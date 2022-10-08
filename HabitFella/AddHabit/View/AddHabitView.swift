@@ -54,17 +54,37 @@ struct AddHabitView: View {
                             Text(addHabitViewModel.selectedText())
                         }
                     }
-                    NavigationLink (destination: Text("T")) {
+                    NavigationLink (destination: TimeOfDayPicker(addHabitViewModel: addHabitViewModel)) {
                         HStack {
                             Text("Time of Day")
                             Spacer()
-                            Text("Any time")
+                            Text(addHabitViewModel.timeOfDayString())
+                        }
+                    }
+                    NavigationLink (destination: TagPickerView(addHabitViewModel: addHabitViewModel)) {
+                        HStack {
+                            Text("Tags")
+                            Spacer()
+                            Text(addHabitViewModel.tagText())
                         }
                     }
                 }
                 
                 Section(header: Text("REMINDERS")) {
-                    
+                    NavigationLink (destination: TimeOfDayPicker(addHabitViewModel: addHabitViewModel)) {
+                        HStack {
+                            Text("Time")
+                            Spacer()
+                            Text(addHabitViewModel.timeOfDayString())
+                        }
+                    }
+                    NavigationLink (destination: TimeOfDayPicker(addHabitViewModel: addHabitViewModel)) {
+                        HStack {
+                            Text("Location")
+                            Spacer()
+                            Text(addHabitViewModel.timeOfDayString())
+                        }
+                    }
                 }
                 
             }.alert("Habit name shouldn't be empty", isPresented: $addHabitViewModel.showHabitNameAlert) {

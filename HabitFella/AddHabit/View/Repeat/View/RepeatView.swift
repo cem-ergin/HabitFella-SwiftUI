@@ -58,8 +58,10 @@ struct RepeatView: View {
             item.index == dayIndex
         }
         if isContains {
-            addHabitViewModel.repeatWeekIndexes.removeAll { item in
-                item.index == dayIndex
+            if addHabitViewModel.repeatWeekIndexes.count != 1 {
+                addHabitViewModel.repeatWeekIndexes.removeAll { item in
+                    item.index == dayIndex
+                }
             }
         } else {
             addHabitViewModel.repeatWeekIndexes.append(RepeatWeekIndexModel(dayIndex))
