@@ -11,17 +11,17 @@ import RealmSwift
 class RealmManager: ObservableObject {
     private(set) var realm: Realm?
     @Published var habits: [Habit] = []
+    @Published var tags: [HabitTag] = []
     
     init() {
         openRealm()
         getHabits()
-        
-        
+        getTags()
     }
     
     func openRealm() {
         do {
-            let config = Realm.Configuration(schemaVersion: 6)
+            let config = Realm.Configuration(schemaVersion: 7)
             Realm.Configuration.defaultConfiguration = config
             realm = try Realm()
         } catch {
@@ -79,4 +79,42 @@ class RealmManager: ObservableObject {
         }
     }
     
+    
+    func getTags() {
+        if let realm = realm {
+            let allTags = realm.objects(HabitTag.self)
+            tags.removeAll()
+            allTags.forEach { tag in
+                tags.append(tag)
+            }
+        }
+    }
+    
+    func addTag(tag: HabitTag) {
+        if let realm = realm {
+            do {
+                try realm.write {
+                    realm.add(tag)
+                    getTags()
+                }
+            } catch {
+                print("Error adding tag to Realm: \(error)")
+            }
+        }
+    }
+    
+    func deleteTag(id: ObjectId) {
+        if let realm = realm {
+            do {
+                let tagToDelete = realm.objects(HabitTag.self).filter(NSPredicate(format: "_id == %@", id))
+                guard !tagToDelete.isEmpty else { return }
+                try realm.write {
+                    realm.delete(tagToDelete)
+                    getTags()
+                }
+            } catch {
+                print("Error deleting tag \(id) to Realm: \(error)")
+            }
+        }
+    }
 }

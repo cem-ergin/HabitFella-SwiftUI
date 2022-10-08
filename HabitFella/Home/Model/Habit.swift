@@ -15,7 +15,7 @@ class Habit: Object, ObjectKeyIdentifiable {
     @Persisted var isDone: Bool = false
     @Persisted var icon: String
     @Persisted var color: HabitColor?
-    @Persisted var tags: List<String>
+    @Persisted var tags: List<HabitTag>
     @Persisted var goalCount: Int
     @Persisted var goalUnit: UnitType.RawValue?
     @Persisted var goalFrequency: FrequencyType.RawValue?

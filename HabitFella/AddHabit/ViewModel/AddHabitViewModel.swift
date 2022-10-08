@@ -7,6 +7,7 @@
 
 import Foundation
 import SwiftUI
+import RealmSwift
 
 @MainActor class AddHabitViewModel: ObservableObject {
     @Published var habitName: String = ""
@@ -35,13 +36,15 @@ import SwiftUI
     @Published var selections : [Int] = []
     
     @Published var repeatIndex = 0
-    @Published var repeatWeekIndexes : [RepeatWeekIndexModel] = []
+    @Published var repeatWeekIndexes : [RepeatWeekIndexModel] = [RepeatWeekIndexModel(0)]
     @Published var repeatMonthIndexes : Set<Int> = [1]
     @Published var repeatMonthIndexList : [Int] = Array(1...31)
-    
 
     @Published var weekdays = ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"]
-
+    @Published var timeOfDayIndex = 0
+    @Published var timeOfDays = ["Morning", "Afternoon", "Evening"]
+    
+    @Published var tags: [HabitTag] = []
     
     init() {
         data = [
@@ -89,8 +92,8 @@ import SwiftUI
             for (index, item) in sortedIndexes.enumerated() {
                 if item.index == index {
                     compareList.append(index)
-                    stringToReturn.append("\(weekdays[index]), ")
                 }
+                stringToReturn.append("\(weekdays[index]), ")
             }
             stringToReturn = String(stringToReturn.dropLast(2))
             if compareList == [0,1,2,3,4,5,6] {
@@ -122,6 +125,36 @@ import SwiftUI
         default:
             return ""
         }
+    }
+    
+    func timeOfDayString () -> String {
+        switch timeOfDayIndex {
+        case 0:
+            return "Morning"
+        case 1:
+            return "Afternoon"
+        case 2:
+            return "Evening"
+        default:
+            return ""
+        }
+    }
+    
+    func addTag (_ tag: HabitTag) {
+        tags.append(tag)
+    }
+    
+    func removeTag (_ tagId: ObjectId) {
+        tags.removeAll { tag in
+            tag._id == tagId
+        }
+    }
+    
+    func tagText () -> String {
+        let listOfTagString = tags.map { tag in
+            tag.tag
+        }
+        return listOfTagString.joined(separator: ", ")
     }
 }
 
