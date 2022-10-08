@@ -8,7 +8,7 @@
 import Foundation
 import RealmSwift
 
-class Color: Object, ObjectKeyIdentifiable {
+class HabitColor: Object, ObjectKeyIdentifiable {
     @Persisted var red : Float
     @Persisted var green : Float
     @Persisted var blue : Float

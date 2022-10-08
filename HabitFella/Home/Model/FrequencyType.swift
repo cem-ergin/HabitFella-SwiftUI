@@ -8,8 +8,8 @@
 import Foundation
 import RealmSwift
 
-enum FrequencyType: String {
-    case daily = "daily"
-    case weekly = "weekly"
-    case monthly = "monthly"
+enum FrequencyType: String, CaseIterable {
+    case daily = "Daily"
+    case weekly = "Weekly"
+    case monthly = "Monthly"
 }

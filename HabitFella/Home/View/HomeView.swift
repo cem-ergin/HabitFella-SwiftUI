@@ -32,8 +32,7 @@ struct HomeView: View {
             .toolbar {
                 ToolbarItem (placement: .navigationBarTrailing) {
                     NavigationLink (destination: AddHabitView()) {
-                        Image(systemName: "plus")
-                        
+                        Image(systemName: "plus")    
                     }
                 }
             }
