@@ -46,6 +46,26 @@ import RealmSwift
     
     @Published var tags: [HabitTag] = []
     
+    @Published var selectedDateForReminderTime: Date = Date()
+    @Published var popoverPresentedForReminderDate: Bool = false
+    
+    @Published var hours = Array(1...24)
+    @Published var minutes = Array(1...60)
+    
+    @Published var dataForTimeReminder: [[String]] = [Array(0...23).map { String($0) }, Array(0...59).map { String($0) }]
+    @Published var selectionsForTimeReminders: [Int] = [13,56]
+    
+    @Published var selectedTimeReminders: [Time] = []
+    
+    @Published var isNotificationsGranted = false
+    
+    func saveTimeReminder () {
+        let time = Time()
+        time.hour = selectionsForTimeReminders[0]
+        time.minute = selectionsForTimeReminders[1]
+        selectedTimeReminders.append(time)
+    }
+    
     init() {
         data = [
             goalNumbers.map{ "\($0)" },
