@@ -20,11 +20,21 @@
 		6FAEDCF928F19C45000CD097 /* HabitTag.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FAEDCF828F19C45000CD097 /* HabitTag.swift */; };
 		6FAEDCFD28F19F14000CD097 /* TimeOfDayPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FAEDCFC28F19F14000CD097 /* TimeOfDayPicker.swift */; };
 		6FAEDD0028F1A74D000CD097 /* TagPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FAEDCFF28F1A74D000CD097 /* TagPickerView.swift */; };
+		6FAEDD0428F23971000CD097 /* ReminderTimePickerViewTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FAEDD0328F23970000CD097 /* ReminderTimePickerViewTest.swift */; };
+		6FAEDD0728F23A3E000CD097 /* ReminderTimePickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FAEDD0628F23A3E000CD097 /* ReminderTimePickerView.swift */; };
+		6FAEDD0A28F23B98000CD097 /* Realm in Frameworks */ = {isa = PBXBuildFile; productRef = 6FAEDD0928F23B98000CD097 /* Realm */; };
+		6FAEDD0C28F23B98000CD097 /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 6FAEDD0B28F23B98000CD097 /* RealmSwift */; };
+		6FAEDD1128F240EA000CD097 /* ViewInspector in Frameworks */ = {isa = PBXBuildFile; productRef = 6FAEDD1028F240EA000CD097 /* ViewInspector */; };
+		6FAEDD1428F2F5C1000CD097 /* Popovers in Frameworks */ = {isa = PBXBuildFile; productRef = 6FAEDD1328F2F5C1000CD097 /* Popovers */; };
+		6FAEDD1628F2F6F0000CD097 /* PickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FAEDD1528F2F6F0000CD097 /* PickerView.swift */; };
+		6FAEDD1928F3038B000CD097 /* NotificationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FAEDD1828F3038B000CD097 /* NotificationManager.swift */; };
+		6FAEDD1E28F340C6000CD097 /* MyUserDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FAEDD1D28F340C6000CD097 /* MyUserDefaults.swift */; };
+		6FAEDD2528F35A82000CD097 /* LocationReminderPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FAEDD2428F35A82000CD097 /* LocationReminderPickerView.swift */; };
+		6FAEDD2828F36C15000CD097 /* MapItemPicker in Frameworks */ = {isa = PBXBuildFile; productRef = 6FAEDD2728F36C15000CD097 /* MapItemPicker */; };
 		6FECB50B28EDE957006F4FF9 /* HabitFellaApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FECB50A28EDE957006F4FF9 /* HabitFellaApp.swift */; };
 		6FECB50D28EDE957006F4FF9 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FECB50C28EDE957006F4FF9 /* ContentView.swift */; };
 		6FECB50F28EDE95B006F4FF9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6FECB50E28EDE95B006F4FF9 /* Assets.xcassets */; };
 		6FECB51228EDE95B006F4FF9 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6FECB51128EDE95B006F4FF9 /* Preview Assets.xcassets */; };
-		6FECB51C28EDE95C006F4FF9 /* HabitFellaTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FECB51B28EDE95C006F4FF9 /* HabitFellaTests.swift */; };
 		6FECB52628EDE95C006F4FF9 /* HabitFellaUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FECB52528EDE95C006F4FF9 /* HabitFellaUITests.swift */; };
 		6FECB52828EDE95C006F4FF9 /* HabitFellaUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FECB52728EDE95C006F4FF9 /* HabitFellaUITestsLaunchTests.swift */; };
 		6FECB53E28EDF2F3006F4FF9 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FECB53D28EDF2F3006F4FF9 /* HomeView.swift */; };
@@ -65,13 +75,18 @@
 		6FAEDCF828F19C45000CD097 /* HabitTag.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitTag.swift; sourceTree = "<group>"; };
 		6FAEDCFC28F19F14000CD097 /* TimeOfDayPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeOfDayPicker.swift; sourceTree = "<group>"; };
 		6FAEDCFF28F1A74D000CD097 /* TagPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagPickerView.swift; sourceTree = "<group>"; };
+		6FAEDD0328F23970000CD097 /* ReminderTimePickerViewTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReminderTimePickerViewTest.swift; sourceTree = "<group>"; };
+		6FAEDD0628F23A3E000CD097 /* ReminderTimePickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReminderTimePickerView.swift; sourceTree = "<group>"; };
+		6FAEDD1528F2F6F0000CD097 /* PickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickerView.swift; sourceTree = "<group>"; };
+		6FAEDD1828F3038B000CD097 /* NotificationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationManager.swift; sourceTree = "<group>"; };
+		6FAEDD1D28F340C6000CD097 /* MyUserDefaults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyUserDefaults.swift; sourceTree = "<group>"; };
+		6FAEDD2428F35A82000CD097 /* LocationReminderPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationReminderPickerView.swift; sourceTree = "<group>"; };
 		6FECB50728EDE957006F4FF9 /* HabitFella.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HabitFella.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6FECB50A28EDE957006F4FF9 /* HabitFellaApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitFellaApp.swift; sourceTree = "<group>"; };
 		6FECB50C28EDE957006F4FF9 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		6FECB50E28EDE95B006F4FF9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		6FECB51128EDE95B006F4FF9 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		6FECB51728EDE95C006F4FF9 /* HabitFellaTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HabitFellaTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		6FECB51B28EDE95C006F4FF9 /* HabitFellaTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitFellaTests.swift; sourceTree = "<group>"; };
 		6FECB52128EDE95C006F4FF9 /* HabitFellaUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HabitFellaUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		6FECB52528EDE95C006F4FF9 /* HabitFellaUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitFellaUITests.swift; sourceTree = "<group>"; };
 		6FECB52728EDE95C006F4FF9 /* HabitFellaUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitFellaUITestsLaunchTests.swift; sourceTree = "<group>"; };
@@ -90,6 +105,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				6FF7E57828F050A90000BCDC /* WrappingHStack in Frameworks */,
+				6FAEDD1428F2F5C1000CD097 /* Popovers in Frameworks */,
+				6FAEDD2828F36C15000CD097 /* MapItemPicker in Frameworks */,
 				6F328F8228EE111B00E1A005 /* RealmSwift in Frameworks */,
 				6F328F8028EE111B00E1A005 /* Realm in Frameworks */,
 				6FA97F6628EE383E0020B56B /* SymbolPicker in Frameworks */,
@@ -100,6 +117,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6FAEDD0C28F23B98000CD097 /* RealmSwift in Frameworks */,
+				6FAEDD0A28F23B98000CD097 /* Realm in Frameworks */,
+				6FAEDD1128F240EA000CD097 /* ViewInspector in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -117,6 +137,8 @@
 			isa = PBXGroup;
 			children = (
 				6F89255328EE2B6D00659C49 /* AddHabitView.swift */,
+				6FAEDD2128F35A60000CD097 /* LocationReminderPicker */,
+				6FAEDD0528F23A2F000CD097 /* ReminderTimePicker */,
 				6FAEDCFE28F1A73F000CD097 /* TagPicker */,
 				6FAEDCFB28F19EF6000CD097 /* TimeOfDayPicker */,
 				6F1BD15428EF778A00EEB0F9 /* Repeat */,
@@ -151,6 +173,7 @@
 			isa = PBXGroup;
 			children = (
 				6FA97F6A28EF32970020B56B /* GoalPickerView.swift */,
+				6FAEDD1528F2F6F0000CD097 /* PickerView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -232,6 +255,45 @@
 			path = TagPicker;
 			sourceTree = "<group>";
 		};
+		6FAEDD0528F23A2F000CD097 /* ReminderTimePicker */ = {
+			isa = PBXGroup;
+			children = (
+				6FAEDD0628F23A3E000CD097 /* ReminderTimePickerView.swift */,
+			);
+			path = ReminderTimePicker;
+			sourceTree = "<group>";
+		};
+		6FAEDD0828F23B98000CD097 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		6FAEDD1728F3037E000CD097 /* Notification */ = {
+			isa = PBXGroup;
+			children = (
+				6FAEDD1828F3038B000CD097 /* NotificationManager.swift */,
+			);
+			path = Notification;
+			sourceTree = "<group>";
+		};
+		6FAEDD1C28F340B0000CD097 /* UserDefaults */ = {
+			isa = PBXGroup;
+			children = (
+				6FAEDD1D28F340C6000CD097 /* MyUserDefaults.swift */,
+			);
+			path = UserDefaults;
+			sourceTree = "<group>";
+		};
+		6FAEDD2128F35A60000CD097 /* LocationReminderPicker */ = {
+			isa = PBXGroup;
+			children = (
+				6FAEDD2428F35A82000CD097 /* LocationReminderPickerView.swift */,
+			);
+			path = LocationReminderPicker;
+			sourceTree = "<group>";
+		};
 		6FECB4FE28EDE957006F4FF9 = {
 			isa = PBXGroup;
 			children = (
@@ -239,6 +301,7 @@
 				6FECB51A28EDE95C006F4FF9 /* HabitFellaTests */,
 				6FECB52428EDE95C006F4FF9 /* HabitFellaUITests */,
 				6FECB50828EDE957006F4FF9 /* Products */,
+				6FAEDD0828F23B98000CD097 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -255,6 +318,8 @@
 		6FECB50928EDE957006F4FF9 /* HabitFella */ = {
 			isa = PBXGroup;
 			children = (
+				6FAEDD1C28F340B0000CD097 /* UserDefaults */,
+				6FAEDD1728F3037E000CD097 /* Notification */,
 				6FF7E57928F050C40000BCDC /* Extensions */,
 				6F89255228EE2B6200659C49 /* AddHabit */,
 				6FECB54728EDF4C6006F4FF9 /* Realm */,
@@ -278,7 +343,7 @@
 		6FECB51A28EDE95C006F4FF9 /* HabitFellaTests */ = {
 			isa = PBXGroup;
 			children = (
-				6FECB51B28EDE95C006F4FF9 /* HabitFellaTests.swift */,
+				6FAEDD0328F23970000CD097 /* ReminderTimePickerViewTest.swift */,
 			);
 			path = HabitFellaTests;
 			sourceTree = "<group>";
@@ -367,6 +432,8 @@
 				6F328F8128EE111B00E1A005 /* RealmSwift */,
 				6FA97F6528EE383E0020B56B /* SymbolPicker */,
 				6FF7E57728F050A90000BCDC /* WrappingHStack */,
+				6FAEDD1328F2F5C1000CD097 /* Popovers */,
+				6FAEDD2728F36C15000CD097 /* MapItemPicker */,
 			);
 			productName = HabitFella;
 			productReference = 6FECB50728EDE957006F4FF9 /* HabitFella.app */;
@@ -386,6 +453,11 @@
 				6FECB51928EDE95C006F4FF9 /* PBXTargetDependency */,
 			);
 			name = HabitFellaTests;
+			packageProductDependencies = (
+				6FAEDD0928F23B98000CD097 /* Realm */,
+				6FAEDD0B28F23B98000CD097 /* RealmSwift */,
+				6FAEDD1028F240EA000CD097 /* ViewInspector */,
+			);
 			productName = HabitFellaTests;
 			productReference = 6FECB51728EDE95C006F4FF9 /* HabitFellaTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
@@ -444,6 +516,9 @@
 				6F328F7E28EE111B00E1A005 /* XCRemoteSwiftPackageReference "realm-cocoa" */,
 				6FA97F6428EE383E0020B56B /* XCRemoteSwiftPackageReference "SymbolPicker" */,
 				6FF7E57628F050A90000BCDC /* XCRemoteSwiftPackageReference "WrappingHStack" */,
+				6FAEDD0D28F240DE000CD097 /* XCRemoteSwiftPackageReference "ViewInspector" */,
+				6FAEDD1228F2F5C1000CD097 /* XCRemoteSwiftPackageReference "Popovers" */,
+				6FAEDD2628F36C14000CD097 /* XCRemoteSwiftPackageReference "swiftui-map-item-picker" */,
 			);
 			productRefGroup = 6FECB50828EDE957006F4FF9 /* Products */;
 			projectDirPath = "";
@@ -491,15 +566,20 @@
 				6FAEDD0028F1A74D000CD097 /* TagPickerView.swift in Sources */,
 				6FECB53E28EDF2F3006F4FF9 /* HomeView.swift in Sources */,
 				6FECB54928EDF4CF006F4FF9 /* RealmManager.swift in Sources */,
+				6FAEDD1928F3038B000CD097 /* NotificationManager.swift in Sources */,
 				6FECB50D28EDE957006F4FF9 /* ContentView.swift in Sources */,
+				6FAEDD1628F2F6F0000CD097 /* PickerView.swift in Sources */,
 				6F1BD14D28EF6AC500EEB0F9 /* AddHabitViewModel.swift in Sources */,
 				6FECB54628EDF347006F4FF9 /* FrequencyType.swift in Sources */,
 				6FECB54428EDF347006F4FF9 /* Time.swift in Sources */,
 				6FA97F6828EF2F760020B56B /* UnitType.swift in Sources */,
 				6FAEDCFD28F19F14000CD097 /* TimeOfDayPicker.swift in Sources */,
+				6FAEDD2528F35A82000CD097 /* LocationReminderPickerView.swift in Sources */,
+				6FAEDD1E28F340C6000CD097 /* MyUserDefaults.swift in Sources */,
 				6F89255428EE2B6D00659C49 /* AddHabitView.swift in Sources */,
 				6FECB54028EDF31A006F4FF9 /* Habit.swift in Sources */,
 				6F1BD15628EF790300EEB0F9 /* RepeatView.swift in Sources */,
+				6FAEDD0728F23A3E000CD097 /* ReminderTimePickerView.swift in Sources */,
 				6FF7E57B28F050D90000BCDC /* Extensions.swift in Sources */,
 				6FECB50B28EDE957006F4FF9 /* HabitFellaApp.swift in Sources */,
 				6FAEDCF928F19C45000CD097 /* HabitTag.swift in Sources */,
@@ -513,7 +593,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6FECB51C28EDE95C006F4FF9 /* HabitFellaTests.swift in Sources */,
+				6FAEDD0428F23971000CD097 /* ReminderTimePickerViewTest.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -578,6 +658,7 @@
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
+				ENABLE_TESTING_SEARCH_PATHS = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -638,6 +719,7 @@
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTING_SEARCH_PATHS = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
@@ -848,6 +930,30 @@
 				minimumVersion = 1.0.0;
 			};
 		};
+		6FAEDD0D28F240DE000CD097 /* XCRemoteSwiftPackageReference "ViewInspector" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/nalexn/ViewInspector";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.9.2;
+			};
+		};
+		6FAEDD1228F2F5C1000CD097 /* XCRemoteSwiftPackageReference "Popovers" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/aheze/Popovers";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.0;
+			};
+		};
+		6FAEDD2628F36C14000CD097 /* XCRemoteSwiftPackageReference "swiftui-map-item-picker" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/lorenzofiamingo/swiftui-map-item-picker";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.0.0;
+			};
+		};
 		6FF7E57628F050A90000BCDC /* XCRemoteSwiftPackageReference "WrappingHStack" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/dkk/WrappingHStack.git";
@@ -873,6 +979,31 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 6FA97F6428EE383E0020B56B /* XCRemoteSwiftPackageReference "SymbolPicker" */;
 			productName = SymbolPicker;
+		};
+		6FAEDD0928F23B98000CD097 /* Realm */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 6F328F7E28EE111B00E1A005 /* XCRemoteSwiftPackageReference "realm-cocoa" */;
+			productName = Realm;
+		};
+		6FAEDD0B28F23B98000CD097 /* RealmSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 6F328F7E28EE111B00E1A005 /* XCRemoteSwiftPackageReference "realm-cocoa" */;
+			productName = RealmSwift;
+		};
+		6FAEDD1028F240EA000CD097 /* ViewInspector */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 6FAEDD0D28F240DE000CD097 /* XCRemoteSwiftPackageReference "ViewInspector" */;
+			productName = ViewInspector;
+		};
+		6FAEDD1328F2F5C1000CD097 /* Popovers */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 6FAEDD1228F2F5C1000CD097 /* XCRemoteSwiftPackageReference "Popovers" */;
+			productName = Popovers;
+		};
+		6FAEDD2728F36C15000CD097 /* MapItemPicker */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 6FAEDD2628F36C14000CD097 /* XCRemoteSwiftPackageReference "swiftui-map-item-picker" */;
+			productName = MapItemPicker;
 		};
 		6FF7E57728F050A90000BCDC /* WrappingHStack */ = {
 			isa = XCSwiftPackageProductDependency;

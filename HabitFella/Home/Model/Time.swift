@@ -9,6 +9,7 @@ import Foundation
 import RealmSwift
 
 class Time: Object, ObjectKeyIdentifiable {
+    @Persisted(primaryKey: true) var _id: ObjectId
     @Persisted var hour: Int
     @Persisted var minute: Int 
 }
