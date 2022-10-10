@@ -12,13 +12,13 @@ class RealmManager: ObservableObject {
     private(set) var realm: Realm?
     @Published var habits: [Habit] = []
     @Published var tags: [HabitTag] = []
-    
+
     init() {
         openRealm()
         getHabits()
         getTags()
     }
-    
+
     func openRealm() {
         do {
             let config = Realm.Configuration(schemaVersion: 8)
@@ -28,7 +28,7 @@ class RealmManager: ObservableObject {
             print("Error opening Realm", error)
         }
     }
-    
+
     func getHabits() {
         if let realm = realm {
             let allHabits = realm.objects(Habit.self)
@@ -38,10 +38,10 @@ class RealmManager: ObservableObject {
             }
         }
     }
-    
+
     func removeAllHabits() {
         if let realm = realm {
-            try! habits.forEach { habit in
+            try? habits.forEach { habit in
                 let habitToDelete = realm.objects(Habit.self).filter(NSPredicate(format: "_id == %@", habit._id))
                 guard !habitToDelete.isEmpty else { return }
                 try realm.write {
@@ -50,7 +50,7 @@ class RealmManager: ObservableObject {
             }
         }
     }
-    
+
     func addHabit(habit: Habit) {
         if let realm = realm {
             do {
@@ -63,7 +63,7 @@ class RealmManager: ObservableObject {
             }
         }
     }
-    
+
     func deleteHabit(id: ObjectId) {
         if let realm = realm {
             do {
@@ -78,8 +78,7 @@ class RealmManager: ObservableObject {
             }
         }
     }
-    
-    
+
     func getTags() {
         if let realm = realm {
             let allTags = realm.objects(HabitTag.self)
@@ -89,7 +88,7 @@ class RealmManager: ObservableObject {
             }
         }
     }
-    
+
     func addTag(tag: HabitTag) {
         if let realm = realm {
             do {
@@ -102,7 +101,7 @@ class RealmManager: ObservableObject {
             }
         }
     }
-    
+
     func deleteTag(id: ObjectId) {
         if let realm = realm {
             do {

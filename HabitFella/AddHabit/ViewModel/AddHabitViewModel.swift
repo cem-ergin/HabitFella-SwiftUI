@@ -22,7 +22,6 @@ import RealmSwift
     @Published var goalUnit = UnitType.times
     @Published var goalFrequency = FrequencyType.daily
     
-    
     @Published var goalNumbers = Array(1...100000)
     @Published var goalNumbersIndex = 0
     @Published var goalUnitTypes = UnitType.allCases.filter({ unitType in
@@ -33,14 +32,14 @@ import RealmSwift
     @Published var goalFrequencyIndex = 0
     
     @Published var data: [[String]] = []
-    @Published var selections : [Int] = []
+    @Published var selections: [Int] = []
     
     @Published var repeatIndex = 0
-    @Published var repeatWeekIndexes : [RepeatWeekIndexModel] = [RepeatWeekIndexModel(0)]
-    @Published var repeatMonthIndexes : Set<Int> = [1]
-    @Published var repeatMonthIndexList : [Int] = Array(1...31)
-
-    @Published var weekdays = ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"]
+    @Published var repeatWeekIndexes: [RepeatWeekIndexModel] = [RepeatWeekIndexModel(0)]
+    @Published var repeatMonthIndexes: Set<Int> = [1]
+    @Published var repeatMonthIndexList: [Int] = Array(1...31)
+    
+    @Published var weekdays = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"]
     @Published var timeOfDayIndex = 0
     @Published var timeOfDays = ["Morning", "Afternoon", "Evening"]
     
@@ -52,8 +51,11 @@ import RealmSwift
     @Published var hours = Array(1...24)
     @Published var minutes = Array(1...60)
     
-    @Published var dataForTimeReminder: [[String]] = [Array(0...23).map { String($0) }, Array(0...59).map { String($0) }]
-    @Published var selectionsForTimeReminders: [Int] = [13,56]
+    @Published var dataForTimeReminder: [[String]] = [
+        Array(0...23).map { String($0) },
+        Array(0...59).map { String($0) }
+    ]
+    @Published var selectionsForTimeReminders: [Int] = [13, 56]
     
     @Published var selectedTimeReminders: [Time] = []
     
@@ -68,7 +70,7 @@ import RealmSwift
     
     init() {
         data = [
-            goalNumbers.map{ "\($0)" },
+            goalNumbers.map { "\($0)" },
             goalUnitTypes.map { "\($0)" },
             goalFrequencies.map { "\($0)" }
         ]
@@ -87,7 +89,7 @@ import RealmSwift
     func selectedGoalFrequencyType () -> FrequencyType {
         return goalFrequencies[goalFrequencyIndex]
     }
-
+    
     func selectedText () -> String {
         "\(selectedGoalNumber()) \(selectedGoalUnitType().rawValue) / \(selectedGoalFrequencyType().rawValue)"
     }
@@ -101,13 +103,13 @@ import RealmSwift
         case 2:
             return "Weekends"
         case 3:
-            if (repeatWeekIndexes.isEmpty) {
+            if repeatWeekIndexes.isEmpty {
                 return "Custom days per week"
             }
             let sortedIndexes = repeatWeekIndexes.sorted {
                 $0.index < $1.index
             }
-            var compareList : [Int] = []
+            var compareList: [Int] = []
             var stringToReturn = ""
             for (index, item) in sortedIndexes.enumerated() {
                 if item.index == index {
@@ -116,13 +118,13 @@ import RealmSwift
                 stringToReturn.append("\(weekdays[index]), ")
             }
             stringToReturn = String(stringToReturn.dropLast(2))
-            if compareList == [0,1,2,3,4,5,6] {
+            if compareList == [0, 1, 2, 3, 4, 5, 6] {
                 stringToReturn = "Every day"
             }
-            if compareList == [0,1,2,3,4] {
+            if compareList == [0, 1, 2, 3, 4] {
                 stringToReturn = "Weekdays"
             }
-            if compareList == [5,6] {
+            if compareList == [5, 6] {
                 stringToReturn = "Weekends"
             }
             return stringToReturn
@@ -177,8 +179,6 @@ import RealmSwift
         return listOfTagString.joined(separator: ", ")
     }
 }
-
-
 
 class RepeatWeekIndexModel: ObservableObject {
     @Published var id = UUID()

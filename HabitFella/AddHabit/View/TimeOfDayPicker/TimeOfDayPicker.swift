@@ -9,19 +9,19 @@ import SwiftUI
 
 struct TimeOfDayPicker: View {
     @ObservedObject var addHabitViewModel: AddHabitViewModel
-    
+
     var body: some View {
         List {
-            ForEach(0..<addHabitViewModel.timeOfDays.count, id: \.self) { i in
-                HStack{
-                    Text("\(addHabitViewModel.timeOfDays[i])")
+            ForEach(0..<addHabitViewModel.timeOfDays.count, id: \.self) { index in
+                HStack {
+                    Text("\(addHabitViewModel.timeOfDays[index])")
                     Spacer()
-                    if addHabitViewModel.timeOfDayIndex == i {
+                    if addHabitViewModel.timeOfDayIndex == index {
                         Image(systemName: "plus")
                     }
                 }.contentShape(Rectangle())
                     .onTapGesture {
-                        addHabitViewModel.timeOfDayIndex = i
+                        addHabitViewModel.timeOfDayIndex = index
                     }
             }
         }

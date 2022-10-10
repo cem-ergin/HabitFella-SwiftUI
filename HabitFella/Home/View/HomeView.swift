@@ -10,11 +10,10 @@ import SwiftUI
 struct HomeView: View {
     @EnvironmentObject var realmManager: RealmManager
     var body: some View {
-        
+
         NavigationView {
             List {
-                ForEach(realmManager.habits, id: \._id) {
-                    habit in
+                ForEach(realmManager.habits, id: \._id) { habit in
                     if !habit.isInvalidated {
                         HStack {
                             Text("\(habit.name)")
@@ -30,9 +29,9 @@ struct HomeView: View {
             }
             .navigationTitle("Home Page")
             .toolbar {
-                ToolbarItem (placement: .navigationBarTrailing) {
-                    NavigationLink (destination: AddHabitView()) {
-                        Image(systemName: "plus")    
+                ToolbarItem(placement: .navigationBarTrailing) {
+                    NavigationLink(destination: AddHabitView()) {
+                        Image(systemName: "plus")
                     }
                 }
             }

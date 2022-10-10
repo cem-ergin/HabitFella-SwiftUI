@@ -12,7 +12,7 @@ struct ReminderTimePickerView: View {
     @ObservedObject var addHabitViewModel: AddHabitViewModel
     @Environment(\.presentationMode) var presentationMode
     @ObservedObject var notificationManager: NotificationManager = NotificationManager()
-    
+
     var body: some View {
         Group {
             switch notificationManager.authorizationStatus {
@@ -29,13 +29,13 @@ struct ReminderTimePickerView: View {
                             var dateComponents = DateComponents()
                             dateComponents.hour = addHabitViewModel.selectionsForTimeReminders[0]
                             dateComponents.minute = addHabitViewModel.selectionsForTimeReminders[1]
-                           
+
                             addHabitViewModel.saveTimeReminder()
                             addHabitViewModel.popoverPresentedForReminderDate = false
                         } label: {
                             Text("Save")
                         }.foregroundColor(.white)
-                        
+
                         Button("Print Notifications") {
                         }
                         .foregroundColor(.blue)
@@ -62,7 +62,7 @@ struct ReminderTimePickerView: View {
                     }.foregroundColor(.white)
                 }
             }
-            
+
         }.onAppear(perform: notificationManager.reloadAuthorizationStatus)
             .onChange(of: notificationManager.authorizationStatus) { authorizationStatus in
                 switch authorizationStatus {

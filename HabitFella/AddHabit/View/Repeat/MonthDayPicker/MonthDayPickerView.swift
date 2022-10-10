@@ -11,9 +11,9 @@ import WrappingHStack
 
 struct MonthDayPickerView: View {
     @ObservedObject var addHabitViewModel: AddHabitViewModel
-    
+
     var body: some View {
-        WrappingHStack(addHabitViewModel.repeatMonthIndexList, id:\.self) { index in
+        WrappingHStack(addHabitViewModel.repeatMonthIndexList, id: \.self) { index in
             Text("\(index)")
                 .frame(width: UIScreen.screenWidth / 10, height: UIScreen.screenWidth / 10)
                 .background(Rectangle().stroke())

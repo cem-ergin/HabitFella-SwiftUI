@@ -8,24 +8,21 @@
 import SwiftUI
 import RealmSwift
 
-
 struct RepeatView: View {
     @ObservedObject var addHabitViewModel: AddHabitViewModel
-    
     let texts = ["Every day", "Weekdays", "Weekends", "Custom days per week", "Custom days per month"]
-    
     var body: some View {
         List {
-            ForEach(0..<texts.count, id: \.self) { i in
+            ForEach(0..<texts.count, id: \.self) { index in
                 VStack {
-                    HStack{
-                        Text("\(texts[i])")
+                    HStack {
+                        Text("\(texts[index])")
                         Spacer()
-                        if addHabitViewModel.repeatIndex == i {
+                        if addHabitViewModel.repeatIndex == index {
                             Image(systemName: "plus")
                         }
                     }
-                    if addHabitViewModel.repeatIndex == i && i == 3 {
+                    if addHabitViewModel.repeatIndex == index && index == 3 {
                         ScrollView(.horizontal) {
                             HStack {
                                 ForEach(0..<addHabitViewModel.weekdays.count) { dayIndex in
@@ -40,19 +37,19 @@ struct RepeatView: View {
                             }
                         }
                     }
-                    if addHabitViewModel.repeatIndex == i && i == 4 {
+                    if addHabitViewModel.repeatIndex == index && index == 4 {
                         HStack {
                             MonthDayPickerView(addHabitViewModel: addHabitViewModel).padding()
-                        }.frame(width: UIScreen.screenWidth * 0.8, height:UIScreen.screenWidth * 0.9)
+                        }.frame(width: UIScreen.screenWidth * 0.8, height: UIScreen.screenWidth * 0.9)
                     }
                 }.contentShape(Rectangle())
                     .onTapGesture {
-                        addHabitViewModel.repeatIndex = i
+                        addHabitViewModel.repeatIndex = index
                     }
             }
         }
     }
-    
+
     fileprivate func onWeekdaysTapped(_ dayIndex: Int) {
         let isContains = addHabitViewModel.repeatWeekIndexes.contains { item in
             item.index == dayIndex

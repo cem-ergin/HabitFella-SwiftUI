@@ -11,14 +11,14 @@ import WrappingHStack
 struct TagPickerView: View {
     @EnvironmentObject var realmManager: RealmManager
     @ObservedObject var addHabitViewModel: AddHabitViewModel
-    
+
     @State var showDialog = false
     @State var showTextEmptyDialog = false
     @State var text = ""
-    
+
     var body: some View {
-        VStack (alignment: .leading) {
-            WrappingHStack(addHabitViewModel.tags, id:\.self, lineSpacing: 8) { tag in
+        VStack(alignment: .leading) {
+            WrappingHStack(addHabitViewModel.tags, id: \.self, lineSpacing: 8) { tag in
                 if !tag.isInvalidated {
                     Text("\(tag.tag)")
                         .padding()
@@ -43,11 +43,13 @@ struct TagPickerView: View {
                     .foregroundColor(.white)
                     .cornerRadius(10)
             }.disabled(text.isEmpty)
-            
+
             if !addHabitViewModel.habitName.split(separator: " ").isEmpty {
                 VStack {
                     Text("Suggestions").bold()
-                    WrappingHStack(addHabitViewModel.habitName.split(separator: " "), id:\.self, lineSpacing: 8) { tagFromName in
+                    WrappingHStack(addHabitViewModel.habitName.split(separator: " "),
+                                   id: \.self,
+                                   lineSpacing: 8) { tagFromName in
                         Text(tagFromName)
                             .padding()
                             .foregroundColor(.white)

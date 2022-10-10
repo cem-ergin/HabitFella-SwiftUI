@@ -24,4 +24,3 @@ class Habit: Object, ObjectKeyIdentifiable {
     @Persisted var startDate: Date
     @Persisted var endDate: Date
 }
-

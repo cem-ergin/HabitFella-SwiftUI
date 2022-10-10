@@ -26,8 +26,8 @@ struct PickerView: UIViewRepresentable {
     }
 
     func updateUIView(_ view: UIPickerView, context: UIViewRepresentableContext<PickerView>) {
-        for i in 0...(self.selections.count - 1) {
-            view.selectRow(self.selections[i], inComponent: i, animated: false)
+        for index in 0...(self.selections.count - 1) {
+            view.selectRow(self.selections[index], inComponent: index, animated: false)
         }
     }
 

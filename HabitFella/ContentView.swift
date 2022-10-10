@@ -9,7 +9,7 @@ import SwiftUI
 
 struct ContentView: View {
     @StateObject var realmManager = RealmManager()
-    
+
     var body: some View {
         HomeView()
             .environmentObject(realmManager)

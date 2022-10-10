@@ -8,15 +8,15 @@
 import Foundation
 
 enum UnitType: String, CaseIterable {
-    case times = "times"
-    case steps = "steps"
-    case m = "m"
-    case km = "km"
-    case mile = "mile"
-    case sec = "sec"
-    case min = "min"
-    case hour = "hour"
-    case ml = "ml"
-    case oz = "oz"
-    case cal = "cal"
+    case times
+    case steps
+    case meter
+    case kilometer
+    case mile
+    case second
+    case minute
+    case hour
+    case mililiter
+    case ounce
+    case calorie
 }

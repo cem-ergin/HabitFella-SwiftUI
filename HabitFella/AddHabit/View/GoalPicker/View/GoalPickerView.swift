@@ -9,7 +9,7 @@ import SwiftUI
 
 struct GoalPickerView: View {
     @ObservedObject var addHabitViewModel: AddHabitViewModel
-    
+
     var body: some View {
         VStack {
             PickerView(data: addHabitViewModel.data, selections: $addHabitViewModel.selections.onChange({ selections in

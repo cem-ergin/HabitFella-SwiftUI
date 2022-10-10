@@ -12,8 +12,10 @@ class Days {
     var days: [String]
     var dayIndex: Int
     var texts: [String]
-    
-    init(days: [String] = ["Every day", "Weekdays", "Weekends", "Custom days per week", "Custom days per month"], dayIndex: Int = 0, texts: [String] = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"]) {
+
+    init(days: [String] = ["Every day", "Weekdays", "Weekends", "Custom days per week", "Custom days per month"],
+         dayIndex: Int = 0,
+         texts: [String] = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"]) {
         self.id = UUID().uuidString
         self.days = days
         self.dayIndex = dayIndex
