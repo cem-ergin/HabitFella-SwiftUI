@@ -19,8 +19,7 @@ class Habit: Object, ObjectKeyIdentifiable {
     @Persisted var goalCount: Int
     @Persisted var goalUnit: UnitType.RawValue?
     @Persisted var goalFrequency: FrequencyType.RawValue?
-    @Persisted var reminderTime: Time?
-    @Persisted var reminderMessage: String
+    @Persisted var reminders: List<Reminder>
     @Persisted var startDate: Date
     @Persisted var endDate: Date
 }

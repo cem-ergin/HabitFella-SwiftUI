@@ -55,7 +55,7 @@ struct TagPickerView: View {
                             .foregroundColor(.white)
                             .background(Capsule().fill(Color(.blue)))
                             .onTapGesture {
-                                realmManager.addTag(tag: HabitTag(value: ["tag": tagFromName]))
+                                addHabitViewModel.addTag(HabitTag(value: ["tag": tagFromName]))
                             }
                     }.frame(height: UIScreen.screenHeight * 0.15)
                 }

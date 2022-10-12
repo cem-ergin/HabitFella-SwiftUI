@@ -15,9 +15,4 @@ import SwiftUI
 extension ReminderTimePickerView: Inspectable { }
 
 final class ReminderTimePickerViewTest: XCTestCase {
-    func test_rendersDatePicker_whenCreated () throws {
-        let sut = ReminderTimePickerView()
-        let datePicker = try sut.inspect().find(ViewType.DatePicker.self)
-        XCTAssertNotNil(datePicker)
-    }
 }

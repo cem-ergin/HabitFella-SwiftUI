@@ -41,12 +41,17 @@ struct ReminderTimePickerView: View {
                         .foregroundColor(.blue)
                         .padding().foregroundColor(.white)
                     }
-                    PickerView(data: addHabitViewModel.dataForTimeReminder, selections: $addHabitViewModel.selectionsForTimeReminders)
+                    PickerView(
+                        data: addHabitViewModel.dataForTimeReminder,
+                        selections: $addHabitViewModel.selectionsForTimeReminders
+                    )
                 }
             case .denied:
                 VStack {
                     Button {
-                        if let url = URL(string: UIApplication.openSettingsURLString), UIApplication.shared.canOpenURL(url) {
+                        if let url = URL(
+                            string: UIApplication.openSettingsURLString),
+                           UIApplication.shared.canOpenURL(url) {
                             UIApplication.shared.open(url, options: [:], completionHandler: nil)
                         }
                     } label: {

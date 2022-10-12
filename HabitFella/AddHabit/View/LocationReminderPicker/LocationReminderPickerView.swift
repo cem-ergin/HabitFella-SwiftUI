@@ -12,12 +12,6 @@ import MapItemPicker
 struct LocationReminderPickerView: View {
     @State private var showingPicker = false
 
-    //    @State private var mapRegion = MKCoordinateRegion(center: CLLocationCoordinate2D(latitude: 51.5, longitude: -0.12), span: MKCoordinateSpan(latitudeDelta: 0.2, longitudeDelta: 0.2))
-    //    let locations = [
-    //        Location(name: "Buckingham Palace", coordinate: CLLocationCoordinate2D(latitude: 51.501, longitude: -0.141)),
-    //        Location(name: "Tower of London", coordinate: CLLocationCoordinate2D(latitude: 51.508, longitude: -0.076))
-    //    ]
-
     var body: some View {
         Button("Choose location") {
             showingPicker = true
@@ -27,13 +21,7 @@ struct LocationReminderPickerView: View {
                 print("Selected \(name)")
             }
         }
-        //        Map(coordinateRegion: $mapRegion, showsUserLocation: true,userTrackingMode: .) { location in
-        //            MapAnnotation(coordinate: location.coordinate) {
-        //                Circle()
-        //                    .stroke(.red, lineWidth: 3)
-        //                    .frame(width: 44, height: 44)
-        //            }
-        //        }
+
     }
 }
 

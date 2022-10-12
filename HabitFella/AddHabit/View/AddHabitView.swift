@@ -73,7 +73,6 @@ struct AddHabitView: View {
                 }
 
                 Section(header: Text("REMINDERS")) {
-                    //                    NavigationLink (destination: ()) {
                     HStack {
                         Text("Time")
                         Spacer()
@@ -81,7 +80,7 @@ struct AddHabitView: View {
                             Button {
                                 addHabitViewModel.selectedTimeReminders.remove(at: index)
                             } label: {
-                                Text("\(addHabitViewModel.selectedTimeReminders[index].hour) - \(addHabitViewModel.selectedTimeReminders[index].minute)")
+                                Text("\(addHabitViewModel.selectedTimeReminders[index].reminderTime!.hour) - \(addHabitViewModel.selectedTimeReminders[index].reminderTime!.minute)")
                             }.buttonStyle(BorderlessButtonStyle())
                         }
 
@@ -137,7 +136,6 @@ struct AddHabitView: View {
                                 }
                         }
                     }
-                    //                    }
                     NavigationLink(destination: TimeOfDayPicker(addHabitViewModel: addHabitViewModel)) {
                         HStack {
                             Text("Location")
@@ -158,8 +156,14 @@ struct AddHabitView: View {
                         return
                     }
 
-                    addHabit()
-                    navigateBack()
+                    let result = addHabitViewModel.addHabit(realmManager)
+
+                    if result.isSuccess {
+                        navigateBack()
+                    } else {
+                        // TODO: show some error alert dialog
+                    }
+
                 } label: {
                     Text("Add Habit")
                 }
@@ -170,12 +174,6 @@ struct AddHabitView: View {
 
     fileprivate func navigateBack() {
         self.presentationMode.wrappedValue.dismiss()
-    }
-
-    fileprivate func addHabit() {
-        let habit = Habit()
-        habit.name = addHabitViewModel.habitName
-        realmManager.addHabit(habit: habit)
     }
 
     fileprivate func iconSelectionView() -> some View {
@@ -191,7 +189,8 @@ struct AddHabitView: View {
 
 struct AddHabitView_Previews: PreviewProvider {
     static var previews: some View {
-        AddHabitView().environmentObject(RealmManager())
+        AddHabitView()
+            .environmentObject(RealmManager())
     }
 }
 

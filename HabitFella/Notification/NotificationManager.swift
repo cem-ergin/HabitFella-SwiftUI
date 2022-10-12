@@ -38,22 +38,32 @@ final class NotificationManager: ObservableObject {
         }
     }
 
-    func createLocalNotification(title: String, body: String, hour: Int, minute: Int, completion: @escaping (Error?) -> Void) {
-        var dateComponents = DateComponents()
-        dateComponents.hour = hour
-        dateComponents.minute = minute
+    func createLocalNotification(
+        title: String,
+        body: String,
+        hour: Int,
+        minute: Int,
+        completion: @escaping (Error?) -> Void
+    ) {
+            var dateComponents = DateComponents()
+            dateComponents.hour = hour
+            dateComponents.minute = minute
 
-        let trigger = UNCalendarNotificationTrigger(dateMatching: dateComponents, repeats: true)
+            let trigger = UNCalendarNotificationTrigger(dateMatching: dateComponents, repeats: true)
 
-        let notificationContent = UNMutableNotificationContent()
-        notificationContent.title = title
-        notificationContent.sound = .default
-        notificationContent.body = body
+            let notificationContent = UNMutableNotificationContent()
+            notificationContent.title = title
+            notificationContent.sound = .default
+            notificationContent.body = body
 
-        let request = UNNotificationRequest(identifier: UUID().uuidString, content: notificationContent, trigger: trigger)
+            let request = UNNotificationRequest(
+                identifier: UUID().uuidString,
+                content: notificationContent,
+                trigger: trigger
+            )
 
-        center.add(request, withCompletionHandler: completion)
-    }
+            center.add(request, withCompletionHandler: completion)
+        }
 
     func deleteLocalNotifications(identifiers: [String]) {
         center.removePendingNotificationRequests(withIdentifiers: identifiers)

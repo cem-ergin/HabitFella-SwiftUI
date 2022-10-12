@@ -21,7 +21,7 @@ class RealmManager: ObservableObject {
 
     func openRealm() {
         do {
-            let config = Realm.Configuration(schemaVersion: 8)
+            let config = Realm.Configuration(schemaVersion: 9)
             Realm.Configuration.defaultConfiguration = config
             realm = try Realm()
         } catch {
@@ -51,17 +51,23 @@ class RealmManager: ObservableObject {
         }
     }
 
-    func addHabit(habit: Habit) {
-        if let realm = realm {
-            do {
-                try realm.write {
-                    realm.add(habit)
-                    getHabits()
-                }
-            } catch {
-                print("Error adding task to Realm: \(error)")
+    fileprivate func failureResponse() -> RealmResponse {
+        return RealmResponse(isSuccess: false, message: "There was an error", createdHabitId: nil)
+    }
+
+    func addHabit(habit: Habit) -> RealmResponse {
+        guard let realm = realm else { return failureResponse() }
+        do {
+            try realm.safeWrite {
+                realm.add(habit)
+                getHabits()
             }
+
+            return RealmResponse(isSuccess: true, message: "Habit created successfully", createdHabitId: habit._id)
+        } catch {
+            print("Error adding task to Realm: \(error)")
         }
+        return failureResponse()
     }
 
     func deleteHabit(id: ObjectId) {
@@ -89,17 +95,20 @@ class RealmManager: ObservableObject {
         }
     }
 
-    func addTag(tag: HabitTag) {
-        if let realm = realm {
-            do {
-                try realm.write {
+    func addTags(tags: [HabitTag]) {
+        guard let realm = realm else { return }
+        
+        do {
+            try realm.safeWrite {
+                for tag in tags {
                     realm.add(tag)
-                    getTags()
                 }
-            } catch {
-                print("Error adding tag to Realm: \(error)")
+                getTags()
             }
+        } catch {
+            print("Error adding tag to Realm: \(error)")
         }
+
     }
 
     func deleteTag(id: ObjectId) {
