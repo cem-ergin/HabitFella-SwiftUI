@@ -16,158 +16,211 @@ struct AddHabitView: View {
     @State var selectedAnchor: Popover.Attributes.Position.Anchor?
 
     var body: some View {
-        NavigationView {
-            List {
-                Section(header: Text("NAME")) {
-                    TextField("Read a book", text: $addHabitViewModel.habitName)
-                }.listStyle(.sidebar)
+        ZStack {
+            Color.teal.ignoresSafeArea().onTapGesture {
+                UIApplication.shared.endEditing()
+            }
+            NavigationView {
+                List {
+                    Section(header: Text("NAME")) {
+                        TextField("Read a book", text: $addHabitViewModel.habitName)
+                    }.listStyle(.sidebar)
 
-                Section(header: Text("STYLE")) {
-                    HStack {
-                        iconSelectionView().onTapGesture {
-                            addHabitViewModel.iconPickerPresented = true
-                        }
-                        .sheet(isPresented: $addHabitViewModel.iconPickerPresented) {
-                            SymbolPicker(symbol: $addHabitViewModel.icon)
-                        }
+                    Section(header: Text("STYLE")) {
+                        HStack {
+                            iconSelectionView().onTapGesture {
+                                addHabitViewModel.iconPickerPresented = true
+                            }
+                            .sheet(isPresented: $addHabitViewModel.iconPickerPresented) {
+                                SymbolPicker(symbol: $addHabitViewModel.icon)
+                            }
 
-                        VStack {
-                            ColorPicker(selection: $addHabitViewModel.backgroundColor) {
-                            }.labelsHidden()
-                        }.frame(width: 50, height: 50, alignment: .center)
-                            .overlay(
-                                RoundedRectangle(cornerRadius: 16)
-                                    .stroke(addHabitViewModel.backgroundColor, lineWidth: 0.5))
+                            VStack {
+                                ColorPicker(selection: $addHabitViewModel.backgroundColor) {
+                                }.labelsHidden()
+                            }.frame(width: 50, height: 50, alignment: .center)
+                                .overlay(
+                                    RoundedRectangle(cornerRadius: 16)
+                                        .stroke(addHabitViewModel.backgroundColor, lineWidth: 0.5))
+                        }
                     }
-                }
 
-                Section(header: Text("SETTINGS")) {
-                    NavigationLink(destination: RepeatView(addHabitViewModel: addHabitViewModel)) {
+                    Section(header: Text("SETTINGS")) {
                         HStack {
                             Text("Repeat")
                             Spacer()
                             Text(addHabitViewModel.repeatText())
+                            Image(systemName: "chevron.right")
+                                .foregroundColor(.gray)
                         }
-                    }
-                    NavigationLink(destination: GoalPickerView(addHabitViewModel: addHabitViewModel)) {
-                        HStack {
-                            Text("Goal")
-                            Spacer()
-                            Text(addHabitViewModel.selectedText())
+                        .contentShape(Rectangle())
+                        .onTapGesture {
+                            addHabitViewModel.repeatPresented = true
                         }
-                    }
-                    NavigationLink(destination: TimeOfDayPicker(addHabitViewModel: addHabitViewModel)) {
-                        HStack {
-                            Text("Time of Day")
-                            Spacer()
-                            Text(addHabitViewModel.timeOfDayString())
-                        }
-                    }
-                    NavigationLink(destination: TagPickerView(addHabitViewModel: addHabitViewModel)) {
-                        HStack {
-                            Text("Tags")
-                            Spacer()
-                            Text(addHabitViewModel.tagText())
-                        }
-                    }
-                }
+                        .popover(present: $addHabitViewModel.repeatPresented, attributes: { att in
+                            att.rubberBandingMode = .none
+                        }) {
+                            RepeatView(addHabitViewModel: addHabitViewModel)
 
-                Section(header: Text("REMINDERS")) {
-                    HStack {
-                        Text("Time")
-                        Spacer()
-                        ForEach(0..<addHabitViewModel.selectedTimeReminders.count, id: \.self) { index in
-                            Button {
-                                addHabitViewModel.selectedTimeReminders.remove(at: index)
-                            } label: {
-                                Text("\(addHabitViewModel.selectedTimeReminders[index].reminderTime!.hour) - \(addHabitViewModel.selectedTimeReminders[index].reminderTime!.minute)")
-                            }.buttonStyle(BorderlessButtonStyle())
                         }
 
-                        Button {
-                            DispatchQueue.main.async {
-                                addHabitViewModel.popoverPresentedForReminderDate = true
+//                        NavigationLink(destination: GoalPickerView(addHabitViewModel: addHabitViewModel)) {
+                            HStack {
+                                Text("Goal")
+                                Spacer()
+                                Text(addHabitViewModel.selectedText())
+                                Image(systemName: "chevron.right")
+                                    .foregroundColor(.gray)
                             }
-                        } label: {
-                            Image(systemName: "plus")
-                                .foregroundColor(.blue)
-                                .padding()
-                                .overlay(
-                                    RoundedRectangle(cornerRadius: 4)
-                                        .stroke(.blue)
-                                ).popover(present: $addHabitViewModel.popoverPresentedForReminderDate, attributes: {
-                                    $0.rubberBandingMode = .none
-                                    $0.presentation.animation = .easeInOut
-                                    $0.presentation.transition = .opacity
-                                    $0.onDismiss = {
-                                    }
-                                    $0.onContextChange = { context in
-                                        self.selectedAnchor = context.selectedAnchor
-                                    }
-                                    $0.sourceFrameInset = UIEdgeInsets(16)
-                                    $0.position = .relative(
-                                        popoverAnchors: [
-                                            selectedAnchor ?? .bottomRight,
-                                            .bottomRight,
-                                            .bottomLeft,
-                                            .topRight,
-                                            .topLeft
-                                        ]
-                                    )
-                                    $0.presentation.animation = .spring(
-                                        response: 0.6,
-                                        dampingFraction: 0.7,
-                                        blendDuration: 1
-                                    )
-
-                                    if [.topLeft, .topRight].contains(selectedAnchor) {
-                                        $0.presentation.transition = .move(edge: .top)
-                                            .combined(with: .opacity)
-                                    } else {
-                                        $0.presentation.transition = .move(edge: .bottom)
-                                            .combined(with: .opacity)
-                                    }
-                                }) {
-                                    ReminderTimePickerView(addHabitViewModel: addHabitViewModel)
-                                        .padding()
-                                        .foregroundColor(.gray)
-                                        .background(.gray)
-                                        .cornerRadius(16)
-                                }
+                            .contentShape(Rectangle())
+                            .onTapGesture {
+                                addHabitViewModel.goalPresented = true
+                            }
+                            .popover(present: $addHabitViewModel.goalPresented, attributes: { att in
+                                att.rubberBandingMode = .none
+                            }) {
+                                GoalPickerView(addHabitViewModel: addHabitViewModel)
+                                    .padding()
+                                    .foregroundColor(.gray)
+                                    .background(.gray)
+                                    .cornerRadius(16)
+                            }
+//                            .popover(isPresented: $addHabitViewModel.goalPresented) {
+//                                GoalPickerView(addHabitViewModel: addHabitViewModel)
+//                            }
+//                        }
+//                        NavigationLink(destination: TimeOfDayPicker(addHabitViewModel: addHabitViewModel)) {
+                            HStack {
+                                Text("Time of Day")
+                                Spacer()
+                                Text(addHabitViewModel.timeOfDayString())
+                                Image(systemName: "chevron.right")
+                                    .foregroundColor(.gray)
+                            }
+                            .contentShape(Rectangle())
+                            .onTapGesture {
+                                addHabitViewModel.timeOfDayPresented = true
+                            }
+                            .popover(present: $addHabitViewModel.timeOfDayPresented, attributes: { att in
+                                att.rubberBandingMode = .none
+                            }) {
+                                TimeOfDayPicker(addHabitViewModel: addHabitViewModel)
+                                    .cornerRadius(16)
+                            }
+//                        }
+                        NavigationLink(destination: TagPickerView(addHabitViewModel: addHabitViewModel)) {
+                            HStack {
+                                Text("Tags")
+                                Spacer()
+                                Text(addHabitViewModel.tagText())
+                            }
                         }
                     }
-                    NavigationLink(destination: TimeOfDayPicker(addHabitViewModel: addHabitViewModel)) {
+
+                    Section(header: Text("REMINDERS")) {
                         HStack {
-                            Text("Location")
+                            Text("Time")
                             Spacer()
-                            Text(addHabitViewModel.timeOfDayString())
+                            ForEach(0..<addHabitViewModel.selectedTimeReminders.count, id: \.self) { index in
+                                Button {
+                                    addHabitViewModel.selectedTimeReminders.remove(at: index)
+                                } label: {
+                                    Text("\(addHabitViewModel.selectedTimeReminders[index].reminderTime!.hour) - \(addHabitViewModel.selectedTimeReminders[index].reminderTime!.minute)")
+                                }.buttonStyle(BorderlessButtonStyle())
+                            }
+
+                            Button {
+                                DispatchQueue.main.async {
+                                    addHabitViewModel.popoverPresentedForReminderDate = true
+                                }
+                            } label: {
+                                Image(systemName: "plus")
+                                    .foregroundColor(.blue)
+                                    .padding()
+                                    .overlay(
+                                        RoundedRectangle(cornerRadius: 4)
+                                            .stroke(.blue)
+                                    ).popover(present: $addHabitViewModel.popoverPresentedForReminderDate, attributes: {
+                                        $0.rubberBandingMode = .none
+                                        $0.presentation.animation = .easeInOut
+                                        $0.presentation.transition = .opacity
+                                        $0.onDismiss = {
+                                        }
+                                        $0.onContextChange = { context in
+                                            self.selectedAnchor = context.selectedAnchor
+                                        }
+                                        $0.sourceFrameInset = UIEdgeInsets(16)
+                                        $0.position = .relative(
+                                            popoverAnchors: [
+                                                selectedAnchor ?? .bottomRight,
+                                                .bottomRight,
+                                                .bottomLeft,
+                                                .topRight,
+                                                .topLeft
+                                            ]
+                                        )
+                                        $0.presentation.animation = .spring(
+                                            response: 0.6,
+                                            dampingFraction: 0.7,
+                                            blendDuration: 1
+                                        )
+
+                                        if [.topLeft, .topRight].contains(selectedAnchor) {
+                                            $0.presentation.transition = .move(edge: .top)
+                                                .combined(with: .opacity)
+                                        } else {
+                                            $0.presentation.transition = .move(edge: .bottom)
+                                                .combined(with: .opacity)
+                                        }
+                                    }) {
+                                        ReminderTimePickerView(addHabitViewModel: addHabitViewModel)
+                                            .padding()
+                                            .foregroundColor(.gray)
+                                            .background(.gray)
+                                            .cornerRadius(16)
+                                    }
+                            }
+                        }
+                        NavigationLink(destination: TimeOfDayPicker(addHabitViewModel: addHabitViewModel)) {
+                            HStack {
+                                Text("Location")
+                                Spacer()
+                                Text(addHabitViewModel.timeOfDayString())
+                            }
+                        }
+                        HStack {
+                            Text("Start date")
+                            Spacer()
+                            DatePicker(selection: $addHabitViewModel.startDate,
+                                       in: Date()...,
+                                       displayedComponents: [.date]) {
+                            }
                         }
                     }
+                }.alert("Habit name shouldn't be empty", isPresented: $addHabitViewModel.showHabitNameAlert) {
+                    Button("OK", role: .cancel) { }
                 }
+            }.toolbar {
+                ToolbarItem(placement: .navigationBarTrailing) {
+                    Button {
+                        if addHabitViewModel.habitName == "" {
+                            addHabitViewModel.showHabitNameAlert = true
+                            return
+                        }
 
-            }.alert("Habit name shouldn't be empty", isPresented: $addHabitViewModel.showHabitNameAlert) {
-                Button("OK", role: .cancel) { }
-            }
-        }.toolbar {
-            ToolbarItem(placement: .navigationBarTrailing) {
-                Button {
-                    if addHabitViewModel.habitName == "" {
-                        addHabitViewModel.showHabitNameAlert = true
-                        return
+                        let result = addHabitViewModel.addHabit(realmManager)
+
+                        if result.isSuccess {
+                            navigateBack()
+                        } else {
+                            // TODO: show some error alert dialog
+                        }
+
+                    } label: {
+                        Text("Add Habit")
                     }
 
-                    let result = addHabitViewModel.addHabit(realmManager)
-
-                    if result.isSuccess {
-                        navigateBack()
-                    } else {
-                        // TODO: show some error alert dialog
-                    }
-
-                } label: {
-                    Text("Add Habit")
                 }
-
             }
         }
     }

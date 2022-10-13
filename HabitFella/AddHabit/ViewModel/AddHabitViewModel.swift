@@ -60,6 +60,11 @@ import RealmSwift
     @Published var selectedTimeReminders: [Reminder] = []
 
     @Published var isNotificationsGranted = false
+    @Published var startDate: Date = Date()
+
+    @Published var repeatPresented = false
+    @Published var goalPresented = false
+    @Published var timeOfDayPresented = false
 
     func saveTimeReminder () {
         let time = Time()
@@ -98,7 +103,19 @@ import RealmSwift
         "\(selectedGoalNumber()) \(selectedGoalUnitType().rawValue) / \(selectedGoalFrequencyType().rawValue)"
     }
 
+    func checkIfHabitIsValid () -> RealmResponse {
+        if habitName.isEmpty {
+            return RealmResponse(isSuccess: false, message: "Habit name can't be empty", createdHabitId: nil)
+        }
+        return RealmResponse(isSuccess: true, message: "", createdHabitId: nil)
+    }
+
     func addHabit(_ realmManager: RealmManager) -> RealmResponse {
+        let response = checkIfHabitIsValid()
+        if !response.isSuccess {
+            return response
+        }
+
         let habit = Habit()
         habit.name = habitName
 
@@ -154,10 +171,14 @@ import RealmSwift
     }
 
     func addTagsToRealm(_ id: ObjectId, realmManager: RealmManager) {
+        var appendingTags: [HabitTag] = []
         for tag in tags {
-            tag.habitId = id
+            let tempTag = HabitTag()
+            tempTag.tag = tag.tag
+            tempTag.habitId = id
+            appendingTags.append(tempTag)
         }
-        realmManager.addTags(tags: tags)
+        realmManager.addTags(tags: appendingTags)
     }
 
     func cleanHabits() {

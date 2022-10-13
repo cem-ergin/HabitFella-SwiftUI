@@ -1,4 +1,3 @@
-//
 //  AddHabitViewModelTest.swift
 //  HabitFellaTests
 //
@@ -49,6 +48,7 @@ final class AddHabitViewModelTest: XCTestCase {
         reminder.reminderMessage = UUID().uuidString
 
         let selectedTimeReminders: [Reminder] = [reminder]
+        let startDate = Date()
 
         let addHabitViewModel = AddHabitViewModel()
         addHabitViewModel.habitName = habitName
@@ -59,12 +59,55 @@ final class AddHabitViewModelTest: XCTestCase {
         addHabitViewModel.goalUnit = goalUnit
         addHabitViewModel.icon = icon
         addHabitViewModel.selectedTimeReminders = selectedTimeReminders
+        addHabitViewModel.startDate = startDate
 
         let realmManager = RealmManager()
 
         let result = addHabitViewModel.addHabit(realmManager)
 
         XCTAssertEqual(result.isSuccess, true)
+    }
+
+    @MainActor func test_realmShouldAddGivenTagsToDatabase() {
+        let habitName = UUID().uuidString
+        let tags: [HabitTag] = [
+            HabitTag(value: [
+                "tag": UUID().uuidString
+            ]),
+            HabitTag(value: [
+                "tag": UUID().uuidString
+            ])
+        ]
+
+        let addHabitViewModel = AddHabitViewModel()
+        addHabitViewModel.habitName = habitName
+        addHabitViewModel.tags = tags
+
+        let realmManager = RealmManager()
+
+        let result = addHabitViewModel.addHabit(realmManager)
+
+        XCTAssertTrue(result.isSuccess)
+
+        let realmTags = realmManager.tags
+        let firstTag = realmTags.contains { tag in
+            tag.tag == tags[0].tag
+        }
+        let secondTag = realmTags.contains { tag in
+            tag.tag == tags[1].tag
+        }
+        XCTAssertTrue(firstTag)
+        XCTAssertTrue(secondTag)
+    }
+
+    @MainActor func test_addHabitReturnsFailure_whenHabitNameIsEmpty() {
+        let addHabitViewModel = AddHabitViewModel()
+        addHabitViewModel.habitName = ""
+
+        let realmManager = RealmManager()
+        let result = addHabitViewModel.addHabit(realmManager)
+
+        XCTAssertFalse(result.isSuccess)
     }
 
     @MainActor func test_addHabitCleansTheHabitValues_whenCleanCalled() {
@@ -91,6 +134,7 @@ final class AddHabitViewModelTest: XCTestCase {
         reminder.reminderMessage = UUID().uuidString
 
         let selectedTimeReminders: [Reminder] = [reminder]
+        let startDate = Date()
 
         let addHabitViewModel = AddHabitViewModel()
         addHabitViewModel.habitName = habitName
@@ -101,6 +145,7 @@ final class AddHabitViewModelTest: XCTestCase {
         addHabitViewModel.goalUnit = goalUnit
         addHabitViewModel.icon = icon
         addHabitViewModel.selectedTimeReminders = selectedTimeReminders
+        addHabitViewModel.startDate = startDate
 
         addHabitViewModel.cleanHabits()
 
@@ -112,5 +157,59 @@ final class AddHabitViewModelTest: XCTestCase {
         XCTAssertEqual(addHabitViewModel.goalUnit, UnitType.times)
         XCTAssertEqual(addHabitViewModel.icon, "book")
         XCTAssertTrue(addHabitViewModel.selectedTimeReminders.isEmpty)
+        XCTAssertEqual(addHabitViewModel.startDate, startDate)
+    }
+
+    @MainActor func test_addHabitCleansTheHabitValues_whenHabitAdded() {
+        let habitName = UUID().uuidString
+        let tags: [HabitTag] = [
+            HabitTag(value: [
+                "tag": UUID().uuidString
+            ]),
+            HabitTag(value: [
+                "tag": UUID().uuidString
+            ])
+        ]
+        let color = Color.green
+        let goalCount = 5
+        let goalFrequency = FrequencyType.daily
+        let goalUnit = UnitType.minute
+        let icon = "plus"
+
+        let reminder = Reminder()
+        let time = Time()
+        time.hour = 13
+        time.minute = 56
+        reminder.reminderTime = time
+        reminder.reminderMessage = UUID().uuidString
+
+        let selectedTimeReminders: [Reminder] = [reminder]
+        let startDate = Date()
+
+        let addHabitViewModel = AddHabitViewModel()
+        addHabitViewModel.habitName = habitName
+        addHabitViewModel.tags = tags
+        addHabitViewModel.backgroundColor = color
+        addHabitViewModel.goalCount = goalCount
+        addHabitViewModel.goalFrequency = goalFrequency
+        addHabitViewModel.goalUnit = goalUnit
+        addHabitViewModel.icon = icon
+        addHabitViewModel.selectedTimeReminders = selectedTimeReminders
+        addHabitViewModel.startDate = startDate
+
+        let realmManager = RealmManager()
+
+        let result = addHabitViewModel.addHabit(realmManager)
+
+        XCTAssertEqual(result.isSuccess, true)
+        XCTAssertTrue(addHabitViewModel.habitName.isEmpty)
+        XCTAssertTrue(addHabitViewModel.tags.isEmpty)
+        XCTAssertEqual(addHabitViewModel.backgroundColor, .blue)
+        XCTAssertEqual(addHabitViewModel.goalCount, 1)
+        XCTAssertEqual(addHabitViewModel.goalFrequency, FrequencyType.daily)
+        XCTAssertEqual(addHabitViewModel.goalUnit, UnitType.times)
+        XCTAssertEqual(addHabitViewModel.icon, "book")
+        XCTAssertTrue(addHabitViewModel.selectedTimeReminders.isEmpty)
+        XCTAssertEqual(addHabitViewModel.startDate, startDate)
     }
 }

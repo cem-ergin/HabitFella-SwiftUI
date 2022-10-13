@@ -77,7 +77,7 @@ class RealmManager: ObservableObject {
                 guard !habitToDelete.isEmpty else { return }
                 try realm.write {
                     realm.delete(habitToDelete)
-                    getHabits()
+                   getHabits()
                 }
             } catch {
                 print("Error deleting task \(id) to Realm: \(error)")

@@ -49,3 +49,15 @@ extension Realm {
         }
     }
 }
+
+extension UIApplication {
+    func endEditing() {
+        sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
+    }
+}
+
+extension UIApplication {
+    func endEditingForSure(_ force: Bool) {
+        UIApplication.shared.windows.forEach { $0.endEditing(force)}
+    }
+}

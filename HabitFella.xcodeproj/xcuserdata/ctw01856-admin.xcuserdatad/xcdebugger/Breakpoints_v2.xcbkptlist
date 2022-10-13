@@ -78,8 +78,8 @@
             filePath = "HabitFella/AddHabit/ViewModel/AddHabitViewModel.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "66"
-            endingLineNumber = "66"
+            startingLineNumber = "71"
+            endingLineNumber = "71"
             landmarkName = "saveTimeReminder()"
             landmarkType = "7">
          </BreakpointContent>
@@ -94,26 +94,10 @@
             filePath = "HabitFella/AddHabit/ViewModel/AddHabitViewModel.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "73"
-            endingLineNumber = "73"
-            landmarkName = "saveTimeReminder()"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "F58E5B5C-7EBE-4104-BACB-3B7B12D380A0"
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "HabitFella/AddHabit/View/AddHabitView.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "159"
-            endingLineNumber = "159"
-            landmarkName = "body"
-            landmarkType = "24">
+            startingLineNumber = "78"
+            endingLineNumber = "78"
+            landmarkName = "AddHabitViewModel"
+            landmarkType = "3">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -135,84 +119,6 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "88AEC678-9177-44A2-A5BC-C23D25756AF6"
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "HabitFellaTests/AddHabitViewModelTest.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "63"
-            endingLineNumber = "63"
-            landmarkName = "test_realmShouldAddGivenHabitToDatabase()"
-            landmarkType = "7">
-            <Locations>
-               <Location
-                  uuid = "88AEC678-9177-44A2-A5BC-C23D25756AF6 - dd4f12f5ee048f2c"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "HabitFellaTests.AddHabitViewModelTest.testSomething() -&gt; ()"
-                  moduleName = "HabitFellaTests"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/ctw01856-admin/Development/xcode_projects/swiftui_projects/HabitFella/HabitFellaTests/AddHabitViewModelTest.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "63"
-                  endingLineNumber = "63"
-                  offsetFromSymbolStart = "2101">
-               </Location>
-               <Location
-                  uuid = "88AEC678-9177-44A2-A5BC-C23D25756AF6 - dd4f12f5ee048fcb"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "HabitFellaTests.AddHabitViewModelTest.testSomething() -&gt; ()"
-                  moduleName = "HabitFellaTests"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/ctw01856-admin/Development/xcode_projects/swiftui_projects/HabitFella/HabitFellaTests/AddHabitViewModelTest.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "62"
-                  endingLineNumber = "62"
-                  offsetFromSymbolStart = "2060">
-               </Location>
-               <Location
-                  uuid = "88AEC678-9177-44A2-A5BC-C23D25756AF6 - dd4f12f5ee048cf2"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "HabitFellaTests.AddHabitViewModelTest.testSomething() -&gt; ()"
-                  moduleName = "HabitFellaTests"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/ctw01856-admin/Development/xcode_projects/swiftui_projects/HabitFella/HabitFellaTests/AddHabitViewModelTest.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "69"
-                  endingLineNumber = "69"
-                  offsetFromSymbolStart = "2191">
-               </Location>
-               <Location
-                  uuid = "88AEC678-9177-44A2-A5BC-C23D25756AF6 - dd4f12f5ee048cf2"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "HabitFellaTests.AddHabitViewModelTest.testSomething() -&gt; ()"
-                  moduleName = "HabitFellaTests"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/ctw01856-admin/Development/xcode_projects/swiftui_projects/HabitFella/HabitFellaTests/AddHabitViewModelTest.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "69"
-                  endingLineNumber = "69"
-                  offsetFromSymbolStart = "16">
-               </Location>
-            </Locations>
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
             uuid = "ED5F3551-93D6-47ED-97F5-86C6C2915108"
             shouldBeEnabled = "No"
             ignoreCount = "0"
@@ -224,6 +130,86 @@
             endingLineNumber = "45"
             landmarkName = "safeWrite(_:)"
             landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "B4622A6B-414E-40E0-A067-062987B77C87"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "HabitFellaTests/AddHabitViewModelTest.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "99"
+            endingLineNumber = "99"
+            landmarkName = "test_realmShouldAddGivenTagsToDatabase()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "748A59DE-E8FF-49DB-AC48-B7442F7F87E6"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "HabitFellaTests/AddHabitViewModelTest.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "94"
+            endingLineNumber = "94"
+            landmarkName = "test_realmShouldAddGivenTagsToDatabase()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "6703D0BB-7FDE-44DA-A00E-1504AAF491DA"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "HabitFella/AddHabit/ViewModel/AddHabitViewModel.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "150"
+            endingLineNumber = "150"
+            landmarkName = "addHabit(_:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "6703D0BB-7FDE-44DA-A00E-1504AAF491DA - 1c38b2f89336c9a"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "HabitFella.AddHabitViewModel.addHabit(HabitFella.RealmManager) -&gt; HabitFella.RealmResponse"
+                  moduleName = "HabitFella"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/ctw01856-admin/Development/xcode_projects/swiftui_projects/HabitFella/HabitFella/AddHabit/ViewModel/AddHabitViewModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "133"
+                  endingLineNumber = "133"
+                  offsetFromSymbolStart = "1621">
+               </Location>
+               <Location
+                  uuid = "6703D0BB-7FDE-44DA-A00E-1504AAF491DA - 1c38b2f89336c9a"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "HabitFella.AddHabitViewModel.addHabit(HabitFella.RealmManager) -&gt; HabitFella.RealmResponse"
+                  moduleName = "HabitFella"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/ctw01856-admin/Development/xcode_projects/swiftui_projects/HabitFella/HabitFella/AddHabit/ViewModel/AddHabitViewModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "133"
+                  endingLineNumber = "133"
+                  offsetFromSymbolStart = "1656">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>
