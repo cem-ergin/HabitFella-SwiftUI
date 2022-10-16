@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 56;
+	objectVersion = 55;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -34,6 +34,8 @@
 		6FAEDD1E28F340C6000CD097 /* MyUserDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FAEDD1D28F340C6000CD097 /* MyUserDefaults.swift */; };
 		6FAEDD2528F35A82000CD097 /* LocationReminderPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FAEDD2428F35A82000CD097 /* LocationReminderPickerView.swift */; };
 		6FAEDD2828F36C15000CD097 /* MapItemPicker in Frameworks */ = {isa = PBXBuildFile; productRef = 6FAEDD2728F36C15000CD097 /* MapItemPicker */; };
+		6FDE1F9428FCA7F80056349B /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FDE1F9328FCA7F80056349B /* HomeViewModel.swift */; };
+		6FDE1F9628FCAB350056349B /* HabitView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FDE1F9528FCAB350056349B /* HabitView.swift */; };
 		6FECB50B28EDE957006F4FF9 /* HabitFellaApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FECB50A28EDE957006F4FF9 /* HabitFellaApp.swift */; };
 		6FECB50D28EDE957006F4FF9 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FECB50C28EDE957006F4FF9 /* ContentView.swift */; };
 		6FECB50F28EDE95B006F4FF9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6FECB50E28EDE95B006F4FF9 /* Assets.xcassets */; };
@@ -87,6 +89,8 @@
 		6FAEDD1828F3038B000CD097 /* NotificationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationManager.swift; sourceTree = "<group>"; };
 		6FAEDD1D28F340C6000CD097 /* MyUserDefaults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyUserDefaults.swift; sourceTree = "<group>"; };
 		6FAEDD2428F35A82000CD097 /* LocationReminderPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationReminderPickerView.swift; sourceTree = "<group>"; };
+		6FDE1F9328FCA7F80056349B /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
+		6FDE1F9528FCAB350056349B /* HabitView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitView.swift; sourceTree = "<group>"; };
 		6FECB50728EDE957006F4FF9 /* HabitFella.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HabitFella.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6FECB50A28EDE957006F4FF9 /* HabitFellaApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitFellaApp.swift; sourceTree = "<group>"; };
 		6FECB50C28EDE957006F4FF9 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -378,6 +382,7 @@
 			isa = PBXGroup;
 			children = (
 				6FECB53D28EDF2F3006F4FF9 /* HomeView.swift */,
+				6FDE1F9528FCAB350056349B /* HabitView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -400,6 +405,7 @@
 		6FECB53C28EDF2E4006F4FF9 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
+				6FDE1F9328FCA7F80056349B /* HomeViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -514,7 +520,7 @@
 				};
 			};
 			buildConfigurationList = 6FECB50228EDE957006F4FF9 /* Build configuration list for PBXProject "HabitFella" */;
-			compatibilityVersion = "Xcode 14.0";
+			compatibilityVersion = "Xcode 13.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
@@ -602,6 +608,7 @@
 				6FAEDD1628F2F6F0000CD097 /* PickerView.swift in Sources */,
 				6F1BD14D28EF6AC500EEB0F9 /* AddHabitViewModel.swift in Sources */,
 				6FECB54628EDF347006F4FF9 /* FrequencyType.swift in Sources */,
+				6FDE1F9428FCA7F80056349B /* HomeViewModel.swift in Sources */,
 				6FECB54428EDF347006F4FF9 /* Time.swift in Sources */,
 				6FA97F6828EF2F760020B56B /* UnitType.swift in Sources */,
 				6FAEDCFD28F19F14000CD097 /* TimeOfDayPicker.swift in Sources */,
@@ -616,6 +623,7 @@
 				6F1B4FB328F75CBF00BF5313 /* RealmStatus.swift in Sources */,
 				6FAEDCF928F19C45000CD097 /* HabitTag.swift in Sources */,
 				6F1BD15D28F0304800EEB0F9 /* MonthDayPickerView.swift in Sources */,
+				6FDE1F9628FCAB350056349B /* HabitView.swift in Sources */,
 				6FECB54528EDF347006F4FF9 /* HabitColor.swift in Sources */,
 				6FA97F6B28EF32970020B56B /* GoalPickerView.swift in Sources */,
 			);
