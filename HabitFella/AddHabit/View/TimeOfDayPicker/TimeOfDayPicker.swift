@@ -24,7 +24,7 @@ struct TimeOfDayPicker: View {
                         addHabitViewModel.timeOfDayIndex = index
                     }
             }
-        }.frame(height: 200)
+        }
     }
 }
 

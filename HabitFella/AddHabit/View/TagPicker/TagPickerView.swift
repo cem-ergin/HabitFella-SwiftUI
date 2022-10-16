@@ -17,7 +17,7 @@ struct TagPickerView: View {
     @State var text = ""
 
     var body: some View {
-        VStack(alignment: .leading) {
+        VStack {
             WrappingHStack(addHabitViewModel.tags, id: \.self, lineSpacing: 8) { tag in
                 if !tag.isInvalidated {
                     Text("\(tag.tag)")
@@ -28,8 +28,9 @@ struct TagPickerView: View {
                             addHabitViewModel.removeTag(tag._id)
                         }
                 }
-            }.frame(height: UIScreen.screenHeight * 0.4)
-                .animation(.default, value: addHabitViewModel.tags)
+            }.animation(.default, value: addHabitViewModel.tags)
+                .padding()
+                .border(addHabitViewModel.tags.isEmpty ? .clear : .blue)
             TextField("Learning", text: $text)
             Button {
                 addHabitViewModel.addTag(HabitTag(value: ["tag": text]))

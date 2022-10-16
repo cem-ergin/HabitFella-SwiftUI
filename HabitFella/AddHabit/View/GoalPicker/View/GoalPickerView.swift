@@ -11,13 +11,20 @@ struct GoalPickerView: View {
     @ObservedObject var addHabitViewModel: AddHabitViewModel
 
     var body: some View {
-            VStack {
-                PickerView(data: addHabitViewModel.data, selections: $addHabitViewModel.selections.onChange({ selections in
-                    addHabitViewModel.goalNumbersIndex = selections[0]
-                    addHabitViewModel.goalUnitTypesIndex = selections[1]
-                    addHabitViewModel.goalFrequencyIndex = selections[2]
-                }))
-            }.frame(width: 300, height: 300)
+        VStack {
+            GeometryReader { geometry in
+                VStack {
+                    PickerView(data: addHabitViewModel.data, selections: $addHabitViewModel.selections.onChange({ selections in
+                        addHabitViewModel.goalNumbersIndex = selections[0]
+                        addHabitViewModel.goalUnitTypesIndex = selections[1]
+                        addHabitViewModel.goalFrequencyIndex = selections[2]
+                    }))
+                    .background(Color.pink)
+                    Text("geometry h: \(geometry.size.height)")
+                    Text("geometry w: \(geometry.size.width)")
+                }
+            }
+        }
     }
 }
 

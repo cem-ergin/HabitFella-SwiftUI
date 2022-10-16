@@ -76,14 +76,11 @@ struct AddHabitView: View {
                             .onTapGesture {
                                 addHabitViewModel.goalPresented = true
                             }
-                            .popover(present: $addHabitViewModel.goalPresented, attributes: { att in
-                                att.rubberBandingMode = .none
-                            }) {
+                            .sheet(isPresented: $addHabitViewModel.goalPresented) {
                                 GoalPickerView(addHabitViewModel: addHabitViewModel)
                                     .padding()
-                                    .foregroundColor(.gray)
-                                    .background(.gray)
-                                    .cornerRadius(16)
+//                                    .presentationDetents([.fraction(0.2)])
+
                             }
 //                            .popover(isPresented: $addHabitViewModel.goalPresented) {
 //                                GoalPickerView(addHabitViewModel: addHabitViewModel)
@@ -101,20 +98,24 @@ struct AddHabitView: View {
                             .onTapGesture {
                                 addHabitViewModel.timeOfDayPresented = true
                             }
-                            .popover(present: $addHabitViewModel.timeOfDayPresented, attributes: { att in
-                                att.rubberBandingMode = .none
-                            }) {
+                            .sheet(isPresented: $addHabitViewModel.timeOfDayPresented) {
                                 TimeOfDayPicker(addHabitViewModel: addHabitViewModel)
                                     .cornerRadius(16)
+                                    .presentationDetents([.medium])
                             }
 //                        }
-                        NavigationLink(destination: TagPickerView(addHabitViewModel: addHabitViewModel)) {
-                            HStack {
-                                Text("Tags")
-                                Spacer()
-                                Text(addHabitViewModel.tagText())
+                        //                        NavigationLink(destination: TagPickerView(ƒ
+                        HStack {
+                            Text("Start date")
+                            Spacer()
+                            DatePicker(selection: $addHabitViewModel.startDate,
+                                       in: Date()...,
+                                       displayedComponents: [.date]) {
                             }
+                        Image(systemName: "chevron.right")
+                            .foregroundColor(.gray)
                         }
+//                        }
                     }
 
                     Section(header: Text("REMINDERS")) {
@@ -181,21 +182,14 @@ struct AddHabitView: View {
                                     }
                             }
                         }
-                        NavigationLink(destination: TimeOfDayPicker(addHabitViewModel: addHabitViewModel)) {
-                            HStack {
-                                Text("Location")
-                                Spacer()
-                                Text(addHabitViewModel.timeOfDayString())
-                            }
-                        }
-                        HStack {
-                            Text("Start date")
-                            Spacer()
-                            DatePicker(selection: $addHabitViewModel.startDate,
-                                       in: Date()...,
-                                       displayedComponents: [.date]) {
-                            }
-                        }
+//                        NavigationLink(destination: TimeOfDayPicker(addHabitViewModel: addHabitViewModel)) {
+//                            HStack {
+//                                Text("Location")
+//                                Spacer()
+//                                Text(addHabitViewModel.timeOfDayString())
+//                            }
+//                        }
+
                     }
                 }.alert("Habit name shouldn't be empty", isPresented: $addHabitViewModel.showHabitNameAlert) {
                     Button("OK", role: .cancel) { }
