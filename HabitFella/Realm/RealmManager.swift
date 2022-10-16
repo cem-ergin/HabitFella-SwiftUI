@@ -39,6 +39,13 @@ class RealmManager: ObservableObject {
         }
     }
 
+    func getHabit(_ id: ObjectId) -> Habit? {
+        guard let realm = realm else { return nil }
+
+        let habit = realm.object(ofType: Habit.self, forPrimaryKey: id)
+        return habit
+    }
+
     func removeAllHabits() {
         if let realm = realm {
             try? habits.forEach { habit in

@@ -65,6 +65,7 @@ import RealmSwift
     @Published var repeatPresented = false
     @Published var goalPresented = false
     @Published var timeOfDayPresented = false
+    @Published var tagsPresented = false
 
     func saveTimeReminder () {
         let time = Time()
