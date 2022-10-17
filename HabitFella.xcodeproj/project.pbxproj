@@ -14,6 +14,8 @@
 		6F1BD15D28F0304800EEB0F9 /* MonthDayPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F1BD15C28F0304800EEB0F9 /* MonthDayPickerView.swift */; };
 		6F328F8028EE111B00E1A005 /* Realm in Frameworks */ = {isa = PBXBuildFile; productRef = 6F328F7F28EE111B00E1A005 /* Realm */; };
 		6F328F8228EE111B00E1A005 /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 6F328F8128EE111B00E1A005 /* RealmSwift */; };
+		6F448CD528FE05B7001B9C2B /* HabitDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F448CD428FE05B7001B9C2B /* HabitDetailView.swift */; };
+		6F448D5628FE0B95001B9C2B /* HabitDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F448D5528FE0B95001B9C2B /* HabitDetailViewModel.swift */; };
 		6F89255428EE2B6D00659C49 /* AddHabitView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F89255328EE2B6D00659C49 /* AddHabitView.swift */; };
 		6FA97F6628EE383E0020B56B /* SymbolPicker in Frameworks */ = {isa = PBXBuildFile; productRef = 6FA97F6528EE383E0020B56B /* SymbolPicker */; };
 		6FA97F6828EF2F760020B56B /* UnitType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FA97F6728EF2F760020B56B /* UnitType.swift */; };
@@ -75,6 +77,8 @@
 		6F1BD15528EF790300EEB0F9 /* RepeatView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepeatView.swift; sourceTree = "<group>"; };
 		6F1BD15928F01EF300EEB0F9 /* Day.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Day.swift; sourceTree = "<group>"; };
 		6F1BD15C28F0304800EEB0F9 /* MonthDayPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonthDayPickerView.swift; sourceTree = "<group>"; };
+		6F448CD428FE05B7001B9C2B /* HabitDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitDetailView.swift; sourceTree = "<group>"; };
+		6F448D5528FE0B95001B9C2B /* HabitDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitDetailViewModel.swift; sourceTree = "<group>"; };
 		6F89255328EE2B6D00659C49 /* AddHabitView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddHabitView.swift; sourceTree = "<group>"; };
 		6FA97F6728EF2F760020B56B /* UnitType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnitType.swift; sourceTree = "<group>"; };
 		6FA97F6A28EF32970020B56B /* GoalPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalPickerView.swift; sourceTree = "<group>"; };
@@ -229,6 +233,39 @@
 			path = MonthDayPicker;
 			sourceTree = "<group>";
 		};
+		6F448CD028FE0594001B9C2B /* HabitDetail */ = {
+			isa = PBXGroup;
+			children = (
+				6F448CD328FE05A3001B9C2B /* ViewModel */,
+				6F448CD228FE059D001B9C2B /* Model */,
+				6F448CD128FE0599001B9C2B /* View */,
+			);
+			path = HabitDetail;
+			sourceTree = "<group>";
+		};
+		6F448CD128FE0599001B9C2B /* View */ = {
+			isa = PBXGroup;
+			children = (
+				6F448CD428FE05B7001B9C2B /* HabitDetailView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		6F448CD228FE059D001B9C2B /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		6F448CD328FE05A3001B9C2B /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				6F448D5528FE0B95001B9C2B /* HabitDetailViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
 		6F89255228EE2B6200659C49 /* AddHabit */ = {
 			isa = PBXGroup;
 			children = (
@@ -328,6 +365,7 @@
 		6FECB50928EDE957006F4FF9 /* HabitFella */ = {
 			isa = PBXGroup;
 			children = (
+				6F448CD028FE0594001B9C2B /* HabitDetail */,
 				6FAEDD1C28F340B0000CD097 /* UserDefaults */,
 				6FAEDD1728F3037E000CD097 /* Notification */,
 				6FF7E57928F050C40000BCDC /* Extensions */,
@@ -598,6 +636,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6F448CD528FE05B7001B9C2B /* HabitDetailView.swift in Sources */,
 				6F1BD15A28F01EF300EEB0F9 /* Day.swift in Sources */,
 				6FAEDD0028F1A74D000CD097 /* TagPickerView.swift in Sources */,
 				6FECB53E28EDF2F3006F4FF9 /* HomeView.swift in Sources */,
@@ -625,6 +664,7 @@
 				6F1BD15D28F0304800EEB0F9 /* MonthDayPickerView.swift in Sources */,
 				6FDE1F9628FCAB350056349B /* HabitView.swift in Sources */,
 				6FECB54528EDF347006F4FF9 /* HabitColor.swift in Sources */,
+				6F448D5628FE0B95001B9C2B /* HabitDetailViewModel.swift in Sources */,
 				6FA97F6B28EF32970020B56B /* GoalPickerView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

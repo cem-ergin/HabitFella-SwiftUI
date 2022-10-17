@@ -99,36 +99,42 @@ final class AddHabitViewModelTest: XCTestCase {
         addHabitViewModel.tags = tags
         addHabitViewModel.backgroundColor = color
         addHabitViewModel.goalCount = goalCount
+        let expectedGoalCount = addHabitViewModel.selectedGoalNumber()
+
         addHabitViewModel.goalFrequency = goalFrequency
+        let expectedGoalFrequency = addHabitViewModel.selectedGoalFrequencyType()
+
         addHabitViewModel.goalUnit = goalUnit
+        let expectedGoalUnit = addHabitViewModel.selectedGoalUnitType()
+
         addHabitViewModel.icon = icon
         addHabitViewModel.selectedTimeReminders = selectedTimeReminders
         addHabitViewModel.startDate = startDate
 
         let realmManager = RealmManager()
-
         let result = addHabitViewModel.addHabit(realmManager)
-    
         XCTAssertEqual(result.isSuccess, true)
 
         let habit = realmManager.getHabit(result.createdHabitId!)
-
         XCTAssertNotNil(habit)
 
         let _habit = habit!
-
-//        let _tags = RealmSwift.List<HabitTag>()
-//        _tags.append(objectsIn: tags)
-
         XCTAssertEqual(_habit.name, habitName)
-//        XCTAssertEqual(_habit.tags, _tags)
-//        XCTAssertEqual(addHabitViewModel.backgroundColor, .blue)
-//        XCTAssertEqual(addHabitViewModel.goalCount, 1)
-//        XCTAssertEqual(addHabitViewModel.goalFrequency, FrequencyType.daily)
-//        XCTAssertEqual(addHabitViewModel.goalUnit, UnitType.times)
-//        XCTAssertEqual(addHabitViewModel.icon, "book")
-//        XCTAssertTrue(addHabitViewModel.selectedTimeReminders.isEmpty)
-//        XCTAssertEqual(addHabitViewModel.startDate, startDate)
+        for (index, tag) in _habit.tags.enumerated() {
+            XCTAssertEqual(tag.tag, tags[index].tag)
+        }
+        XCTAssertEqual(_habit.color!.green, Float(color.components.green))
+        XCTAssertEqual(_habit.color!.red, Float(color.components.red))
+        XCTAssertEqual(_habit.color!.blue, Float(color.components.blue))
+        XCTAssertEqual(_habit.color!.alpha, Float(color.components.alpha))
+        XCTAssertEqual(_habit.goalCount, expectedGoalCount)
+        XCTAssertEqual(_habit.goalFrequency, expectedGoalFrequency.rawValue)
+        XCTAssertEqual(_habit.goalUnit, expectedGoalUnit.rawValue)
+        XCTAssertEqual(_habit.icon, icon)
+        XCTAssertEqual(
+            _habit.startDate.formatted(date: .long, time: .shortened),
+            startDate.formatted(date: .long, time: .shortened)
+        )
     }
 
     @MainActor func test_realmShouldAddGivenTagsToDatabase() {

@@ -40,6 +40,30 @@ extension UIColor {
     }
 }
 
+extension Color {
+    var components: (red: CGFloat, green: CGFloat, blue: CGFloat, alpha: CGFloat) {
+
+        #if canImport(UIKit)
+        typealias NativeColor = UIColor
+        #elseif canImport(AppKit)
+        typealias NativeColor = NSColor
+        #endif
+
+        var red: CGFloat = 0
+        var green: CGFloat = 0
+        var blue: CGFloat = 0
+        var alpha: CGFloat = 0
+
+        guard NativeColor(self).getRed(&red, green: &green, blue: &blue, alpha: &alpha) else {
+            // You can handle the failure here as you want
+            return (0, 0, 0, 0)
+        }
+
+        return (red, green, blue, alpha)
+    }
+}
+
+
 extension Realm {
     public func safeWrite(_ block: (() throws -> Void)) throws {
         if isInWriteTransaction {

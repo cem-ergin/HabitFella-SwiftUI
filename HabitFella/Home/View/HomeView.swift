@@ -20,22 +20,6 @@ struct HomeView: View {
                     }
                 }.padding()
             }
-//            .scrollDisabled(scrollDisabled)
-            //            List {
-            //                ForEach(realmManager.habits, id: \._id) { habit in
-            //                    if !habit.isInvalidated {
-            //                        HStack {
-            //                            Text("\(habit.name)")
-            //                            Spacer()
-            //                            Image(systemName: "trash")
-            //                                .foregroundColor(.red)
-            //                                .onTapGesture {
-            //                                    realmManager.deleteHabit(id: habit._id)
-            //                                }
-            //                        }
-            //                    }
-            //                }
-            //            }
             .navigationTitle("Home Page")
             .toolbar {
                 ToolbarItem(placement: .navigationBarTrailing) {

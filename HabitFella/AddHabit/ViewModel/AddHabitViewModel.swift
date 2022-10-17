@@ -132,9 +132,9 @@ import RealmSwift
             "alpha": uiColor.rgba.alpha
         ])
 
-        habit.goalCount = goalCount
-        habit.goalFrequency = goalFrequency.rawValue
-        habit.goalUnit = goalUnit.rawValue
+        habit.goalCount = selectedGoalNumber()
+        habit.goalFrequency = selectedGoalFrequencyType().rawValue
+        habit.goalUnit = selectedGoalUnitType().rawValue
         habit.icon = icon
 
         let _reminders = RealmSwift.List<Reminder>()

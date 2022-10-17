@@ -1,46 +1,40 @@
 //
-//  HabitView.swift
+//  HabitDetailView.swift
 //  HabitFella
 //
-//  Created by Cem Ergin on 16/10/2022.
+//  Created by Cem Ergin on 17/10/2022.
 //
 
 import SwiftUI
 
-struct HabitView: View {
-    var habit: Habit
+struct HabitDetailView: View {
+    @StateObject var habitDetailViewModel: HabitDetailViewModel
     @State var heightOfBlue: CGFloat = 0.0
     @State var lastDrag: CGFloat = 0.0
     @State var animation = false
-    var frameHeight = UIScreen.screenHeight * 0.6
-    var frameWidth = UIScreen.screenWidth * 0.4
+    var frameHeight = UIScreen.screenHeight * 0.9
+    var frameWidth = UIScreen.screenWidth * 0.6
     @State var currentSection: Int = 0
 
     var body: some View {
         ZStack(alignment: .bottom) {
             VStack {
-                Image(systemName: habit.icon)
-                Text(habit.name)
-                Text("\(currentSection)/\(habit.goalCount)")
+                Image(systemName: habitDetailViewModel.habit.icon)
+                    .onTapGesture {
+                        habitDetailViewModel.updateIcon("plus")
+                    }
+                Text(habitDetailViewModel.habit.name)
+                Text("\(currentSection)/\(habitDetailViewModel.habit.goalCount)")
             }
             .frame(width: frameWidth, height: frameHeight)
             .overlay(
                 Capsule(style: .continuous)
                     .stroke(
-                        Color(UIColor(
-                        red: CGFloat(habit.color!.red),
-                        green: CGFloat(habit.color!.green),
-                        blue: CGFloat(habit.color!.blue),
-                        alpha: CGFloat(habit.color!.alpha
-                                      )))
-                    ))
+                        habitDetailViewModel.color
+                    )
+            )
             .contentShape(Capsule())
-            Color(UIColor(
-                red: CGFloat(habit.color!.red),
-                green: CGFloat(habit.color!.green),
-                blue: CGFloat(habit.color!.blue),
-                alpha: CGFloat(habit.color!.alpha
-                              )))
+            habitDetailViewModel.color
             .frame(width: frameWidth, height: heightOfBlue)
             .animation(.easeInOut, value: animation)
             .opacity(0.3)
@@ -59,10 +53,10 @@ struct HabitView: View {
                 }
                 if heightOfBlue + dragValueToAdd > frameHeight {
                     heightOfBlue = frameHeight
-                    self.currentSection = habit.goalCount
+                    self.currentSection = habitDetailViewModel.habit.goalCount
                     return
                 }
-                var currentSection = (heightOfBlue / frameHeight) * CGFloat(habit.goalCount)
+                var currentSection = (heightOfBlue / frameHeight) * CGFloat(habitDetailViewModel.habit.goalCount)
                 currentSection.round(.toNearestOrAwayFromZero)
                 self.currentSection = Int(currentSection)
                 heightOfBlue += dragValueToAdd
@@ -71,16 +65,16 @@ struct HabitView: View {
                 .onEnded({ _ in
                     lastDrag = 0
                     animation = true
-                    let dividedHeight = CGFloat(frameHeight) / CGFloat(habit.goalCount)
+                    let dividedHeight = CGFloat(frameHeight) / CGFloat(habitDetailViewModel.habit.goalCount)
                     heightOfBlue = Double(dividedHeight * Double(self.currentSection))
                 })
         )
     }
 }
 
-struct HabitView_Previews: PreviewProvider {
+struct HabitDetailView_Previews: PreviewProvider {
     static var previews: some View {
-        HabitView(habit: Habit(value: [
+        HabitDetailView(habitDetailViewModel: HabitDetailViewModel(Habit(value: [
             "name": "Read a Book",
             "icon": "book",
             "color": [
@@ -90,6 +84,6 @@ struct HabitView_Previews: PreviewProvider {
                 "alpha": 0.5
             ],
             "goalCount": 5
-        ]))
+        ])))
     }
 }
