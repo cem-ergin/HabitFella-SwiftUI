@@ -6,25 +6,90 @@
 //
 
 import SwiftUI
+import SymbolPicker
 
 struct HabitDetailView: View {
+    @EnvironmentObject var realmManager: RealmManager
     @StateObject var habitDetailViewModel: HabitDetailViewModel
     @State var heightOfBlue: CGFloat = 0.0
     @State var lastDrag: CGFloat = 0.0
     @State var animation = false
-    var frameHeight = UIScreen.screenHeight * 0.9
-    var frameWidth = UIScreen.screenWidth * 0.6
+//    var frameHeight = UIScreen.screenHeight * 0.9
+    var frameHeight = 500.0
+//    var frameWidth = UIScreen.screenWidth * 0.6
+    var frameWidth = 300.0
     @State var currentSection: Int = 0
+    @State var showGoalPicker: Bool = false
 
     var body: some View {
         ZStack(alignment: .bottom) {
             VStack {
-                Image(systemName: habitDetailViewModel.habit.icon)
-                    .onTapGesture {
-                        habitDetailViewModel.updateIcon("plus")
+                HStack {
+                    VStack {
+                        ZStack(alignment: .topTrailing) {
+                            Image(systemName: "pencil")
+                                .font(.system(size: 12))
+                                .padding(-4)
+                            Image(systemName: habitDetailViewModel.icon)
+                                .padding(6)
+                                .border(habitDetailViewModel.color)
+                        }
                     }
-                Text(habitDetailViewModel.habit.name)
+                    .onTapGesture {
+                        habitDetailViewModel.iconPickerPresented = true
+                    }
+                    .sheet(isPresented: $habitDetailViewModel.iconPickerPresented) {
+                        SymbolPicker(symbol: $habitDetailViewModel.icon)
+                    }
+                }
+                ZStack(alignment: .topTrailing) {
+                    Image(systemName: "pencil")
+                        .font(.system(size: 12))
+                    HStack {
+                        Spacer()
+                        TextField("Habit name", text: $habitDetailViewModel.name)
+                            .padding(6)
+                            .border(habitDetailViewModel.color)
+                        Spacer()
+                    }
+                }
                 Text("\(currentSection)/\(habitDetailViewModel.habit.goalCount)")
+                HStack {
+                    ZStack(alignment: .topTrailing) {
+                        Image(systemName: "pencil")
+                            .font(.system(size: 12))
+                        Text("\(habitDetailViewModel.goalCount)")
+                            .padding(6)
+                            .border(habitDetailViewModel.color)
+                    }
+                    .onTapGesture {
+                        print("Why is it not showing?")
+                        showGoalPicker = true
+                    }
+                    .sheet(isPresented: $showGoalPicker) {
+                        let pickerStrings = Array(1...9000).map { String($0) }
+                        HabitDetailPickerView(
+                            pickerStrings: pickerStrings,
+                            selectedString: [habitDetailViewModel.goalCount],
+                            title: "Choose goal count"
+                        )
+                        .presentationDetents([.medium])
+                    }
+                    ZStack(alignment: .topTrailing) {
+                        Image(systemName: "pencil")
+                            .font(.system(size: 12))
+                        Text("\(habitDetailViewModel.goalUnit)")
+                            .padding(6)
+                            .border(habitDetailViewModel.color)
+                    }
+                    ZStack(alignment: .topTrailing) {
+                        Image(systemName: "pencil")
+                            .font(.system(size: 12))
+                        Text("\(habitDetailViewModel.goalFrequency)")
+                            .padding(6)
+                            .border(habitDetailViewModel.color)
+                    }
+                }
             }
             .frame(width: frameWidth, height: frameHeight)
             .overlay(
@@ -83,7 +148,10 @@ struct HabitDetailView_Previews: PreviewProvider {
                 "blue": 0.5,
                 "alpha": 0.5
             ],
-            "goalCount": 5
-        ])))
+            "goalCount": 5,
+            "goalUnit": "times",
+            "goalFrequency": "Every day"
+        ]), RealmManager()))
+        .environmentObject(RealmManager())
     }
 }

@@ -61,7 +61,6 @@ struct AddHabitView: View {
                             att.rubberBandingMode = .none
                         }) {
                             RepeatView(addHabitViewModel: addHabitViewModel)
-
                         }
 
 //                        NavigationLink(destination: GoalPickerView(addHabitViewModel: addHabitViewModel)) {

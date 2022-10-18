@@ -132,4 +132,43 @@ class RealmManager: ObservableObject {
             }
         }
     }
+
+    func updateHabit(habit: Habit) -> RealmResponse {
+        guard let realm = realm else {
+            print("Couldn't found habit")
+            return RealmResponse(isSuccess: false, message: "Couldn't find habit to update", createdHabitId: habit._id)
+        }
+
+        do {
+            let _habit = realm.object(ofType: Habit.self, forPrimaryKey: habit._id)
+
+            try realm.write {
+                if let habitToUpdate = _habit {
+                    // TODO: performance improvements: Maybe I can do something like
+                    // switch case for each variable of habit
+                    // because right now I am passing whole Habit. Which is not necessary
+
+                    habitToUpdate.name = habit.name
+                    habitToUpdate.isDone = habit.isDone
+                    habitToUpdate.icon = habit.icon
+                    habitToUpdate.color = habit.color
+                    habitToUpdate.tags = habit.tags
+                    habitToUpdate.goalCount = habit.goalCount
+                    habitToUpdate.goalUnit = habit.goalUnit
+                    habitToUpdate.goalFrequency = habit.goalFrequency
+                    habitToUpdate.reminders = habit.reminders
+                    habitToUpdate.startDate = habit.startDate
+                    habitToUpdate.endDate = habit.endDate
+
+                    self.objectWillChange.send()
+                    return RealmResponse(isSuccess: true, message: "Updated successfully", createdHabitId: habit._id)
+                }
+                return RealmResponse(isSuccess: false, message: "Habit is corrupted", createdHabitId: habit._id)
+            }
+            return RealmResponse(isSuccess: false, message: "Databse is not ready", createdHabitId: habit._id)
+        } catch {
+            print("Error updating tag \(habit.id) to Realm: \(error)")
+            return RealmResponse(isSuccess: false, message: "\(error)", createdHabitId: habit._id)
+        }
+    }
 }

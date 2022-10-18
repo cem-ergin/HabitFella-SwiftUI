@@ -17,6 +17,7 @@ struct HomeView: View {
                 HStack {
                     ForEach(realmManager.habits, id: \._id) { habit in
                         HabitView(habit: habit)
+                            .environmentObject(realmManager)
                     }
                 }.padding()
             }
