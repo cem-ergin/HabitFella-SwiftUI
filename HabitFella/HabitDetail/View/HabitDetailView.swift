@@ -20,10 +20,19 @@ struct HabitDetailView: View {
     var frameWidth = 300.0
     @State var currentSection: Int = 0
     @State var showGoalPicker: Bool = false
+    @State var showUnitPicker: Bool = false
+    @State var showFrequencyPicker: Bool = false
 
     var body: some View {
         ZStack(alignment: .bottom) {
             VStack {
+                VStack {
+                    ColorPicker(selection: $habitDetailViewModel.color) {
+                    }.labelsHidden()
+                }.frame(width: 50, height: 50, alignment: .center)
+                    .overlay(
+                        RoundedRectangle(cornerRadius: 16)
+                            .stroke(habitDetailViewModel.color, lineWidth: 0.5))
                 HStack {
                     VStack {
                         ZStack(alignment: .topTrailing) {
@@ -63,15 +72,19 @@ struct HabitDetailView: View {
                             .border(habitDetailViewModel.color)
                     }
                     .onTapGesture {
-                        print("Why is it not showing?")
                         showGoalPicker = true
                     }
                     .sheet(isPresented: $showGoalPicker) {
                         let pickerStrings = Array(1...9000).map { String($0) }
                         HabitDetailPickerView(
                             pickerStrings: pickerStrings,
-                            selectedString: [habitDetailViewModel.goalCount],
-                            title: "Choose goal count"
+                            selectedIndex: [
+                                Int(pickerStrings.firstIndex(of: String(habitDetailViewModel.goalCount)) ?? 0)
+                            ],
+                            title: "Choose",
+                            someFunction: { selection in
+                                habitDetailViewModel.goalCount = Int(pickerStrings[selection])!
+                            }
                         )
                         .presentationDetents([.medium])
                     }
@@ -82,12 +95,50 @@ struct HabitDetailView: View {
                             .padding(6)
                             .border(habitDetailViewModel.color)
                     }
+                    .onTapGesture {
+                        showUnitPicker = true
+                    }
+                    .sheet(isPresented: $showUnitPicker) {
+                        let unitTypes = UnitType.allCases.map { type in
+                            type.rawValue
+                        }
+                        HabitDetailPickerView(
+                            pickerStrings: unitTypes,
+                            selectedIndex: [
+                                Int(unitTypes.firstIndex(of: String(habitDetailViewModel.goalUnit)) ?? 0)
+                            ],
+                            title: "Choose",
+                            someFunction: { selection in
+                                habitDetailViewModel.goalUnit = unitTypes[selection]
+                            }
+                        )
+                        .presentationDetents([.medium])
+                    }
                     ZStack(alignment: .topTrailing) {
                         Image(systemName: "pencil")
                             .font(.system(size: 12))
                         Text("\(habitDetailViewModel.goalFrequency)")
                             .padding(6)
                             .border(habitDetailViewModel.color)
+                    }
+                    .onTapGesture {
+                        showFrequencyPicker = true
+                    }
+                    .sheet(isPresented: $showFrequencyPicker) {
+                        let frequencyTypes = FrequencyType.allCases.map { type in
+                            type.rawValue
+                        }
+                        HabitDetailPickerView(
+                            pickerStrings: frequencyTypes,
+                            selectedIndex: [
+                                Int(frequencyTypes.firstIndex(of: String(habitDetailViewModel.goalFrequency)) ?? 0)
+                            ],
+                            title: "Choose",
+                            someFunction: { selection in
+                                habitDetailViewModel.goalFrequency = frequencyTypes[selection]
+                            }
+                        )
+                        .presentationDetents([.medium])
                     }
                 }
             }

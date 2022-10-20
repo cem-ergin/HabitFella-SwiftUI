@@ -31,9 +31,12 @@ import RealmSwift
             )
         }
         set(color) {
-            // TODO: set the given color
-            print("set this color: \(color)")
-            habit.color = HabitColor()
+            let habitColor = HabitColor()
+            habitColor.green = Float(color.components.green)
+            habitColor.red = Float(color.components.red)
+            habitColor.blue = Float(color.components.blue)
+            habitColor.alpha = Float(color.components.alpha)
+            habit.color = habitColor
             updateHabit()
         }
     }

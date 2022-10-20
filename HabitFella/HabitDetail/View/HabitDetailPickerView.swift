@@ -9,12 +9,13 @@ import SwiftUI
 
 struct HabitDetailPickerView: View {
     var pickerStrings: [String]
-    @State var selectedString: [Int]
+    @State var selectedIndex: [Int]
     var title: String
+    var someFunction: (_ selection: Int) -> Void
 
     var body: some View {
-        PickerView(data: [pickerStrings], selections: $selectedString.onChange({ selections in
-            print("new selection: \(selections[0])")
+        PickerView(data: [pickerStrings], selections: $selectedIndex.onChange({ selections in
+            someFunction(selections[0])
         }))
     }
 }
@@ -23,8 +24,9 @@ struct HabitDetailPickerView_Previews: PreviewProvider {
     static var previews: some View {
         HabitDetailPickerView(
             pickerStrings: Array(1...33).map { String($0) },
-            selectedString: [5],
-            title: "Select something"
-        )
+            selectedIndex: [5],
+            title: "Select something") {selection in
+
+            }
     }
 }
