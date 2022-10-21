@@ -23,6 +23,7 @@ struct HabitDetailView: View {
     @State var showUnitPicker: Bool = false
     @State var showFrequencyPicker: Bool = false
 
+    @State var localToggle: Bool = false
     var body: some View {
         ZStack(alignment: .bottom) {
             VStack {
@@ -141,6 +142,22 @@ struct HabitDetailView: View {
                         .presentationDetents([.medium])
                     }
                 }
+                HStack {
+                    Text("Start Date")
+                    Text("").padding()
+                    Text("\(habitDetailViewModel.habit.startDate)")
+                }
+                HStack {
+                    Text(habitDetailViewModel.endDateToggle ? "End Date" : "")
+                    if localToggle {
+                        DatePicker("Choose end date", selection: $habitDetailViewModel.endDate, displayedComponents: [.date])
+                    }
+                    Toggle(!localToggle ? "Use end date" : "", isOn: $localToggle)
+                        .onChange(of: localToggle) { newValue in
+                            print("is this not changing?")
+                            habitDetailViewModel.setEndDateToggle(newValue)
+                        }
+                }
             }
             .frame(width: frameWidth, height: frameHeight)
             .overlay(
@@ -158,7 +175,7 @@ struct HabitDetailView: View {
         .clipShape(Capsule())
         .contentShape(Capsule())
         .gesture(DragGesture()
-            .onChanged({ drag in
+            .onChanged { drag in
                 animation = false
                 let dragChange = drag.translation.height * -1
                 let dragValueToAdd = dragChange - lastDrag
@@ -177,7 +194,7 @@ struct HabitDetailView: View {
                 self.currentSection = Int(currentSection)
                 heightOfBlue += dragValueToAdd
                 lastDrag = dragChange
-            })
+            }
                 .onEnded({ _ in
                     lastDrag = 0
                     animation = true
@@ -193,12 +210,7 @@ struct HabitDetailView_Previews: PreviewProvider {
         HabitDetailView(habitDetailViewModel: HabitDetailViewModel(Habit(value: [
             "name": "Read a Book",
             "icon": "book",
-            "color": [
-                "red": 0.5,
-                "green": 0.5,
-                "blue": 0.5,
-                "alpha": 0.5
-            ],
+            "color": HabitColor(),
             "goalCount": 5,
             "goalUnit": "times",
             "goalFrequency": "Every day"

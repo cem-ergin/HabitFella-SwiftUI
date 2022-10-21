@@ -91,6 +91,29 @@ import RealmSwift
         }
     }
 
+    var endDate: Date {
+        get {
+            if habit.endDate == habit.startDate {
+                return Date()
+            } else {
+                return habit.endDate
+            }
+        }
+        set(date) {
+            habit.endDate = date
+        }
+    }
+
+    @State var endDateToggle: Bool = false
+    func setEndDateToggle(_ value: Bool) {
+        print("value is here and it is: \(value)")
+        endDateToggle = value
+        if !value {
+            endDate = habit.startDate
+        }
+        self.objectWillChange.send()
+    }
+
     func updateHabit() {
         _ = realmManager.updateHabit(habit: habit)
     }
