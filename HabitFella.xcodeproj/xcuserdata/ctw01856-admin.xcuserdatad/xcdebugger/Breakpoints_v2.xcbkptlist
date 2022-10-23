@@ -244,5 +244,53 @@
             landmarkType = "24">
          </BreakpointContent>
       </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "22BD7403-7147-4BA7-94E7-E27E844BB732"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "HabitFella/HabitDetail/ViewModel/HabitDetailViewModel.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "133"
+            endingLineNumber = "133"
+            landmarkName = "removeTag(_:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "22BD7403-7147-4BA7-94E7-E27E844BB732 - 356f52f3aa2c496f"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "HabitFella.HabitDetailViewModel.removeTag(RealmSwift.ObjectId) -&gt; ()"
+                  moduleName = "HabitFella"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/ctw01856-admin/Development/xcode_projects/swiftui_projects/HabitFella/HabitFella/HabitDetail/ViewModel/HabitDetailViewModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "124"
+                  endingLineNumber = "124"
+                  offsetFromSymbolStart = "75">
+               </Location>
+               <Location
+                  uuid = "22BD7403-7147-4BA7-94E7-E27E844BB732 - 3c0f342de4f6f36"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (HabitFella.HabitTag) -&gt; Swift.Bool in HabitFella.HabitDetailViewModel.removeTag(RealmSwift.ObjectId) -&gt; ()"
+                  moduleName = "HabitFella"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/ctw01856-admin/Development/xcode_projects/swiftui_projects/HabitFella/HabitFella/HabitDetail/ViewModel/HabitDetailViewModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "125"
+                  endingLineNumber = "125"
+                  offsetFromSymbolStart = "49">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
    </Breakpoints>
 </Bucket>

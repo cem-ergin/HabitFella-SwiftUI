@@ -101,17 +101,56 @@ import RealmSwift
         }
         set(date) {
             habit.endDate = date
+            updateHabit()
+        }
+    }
+    
+    var tags: [HabitTag] {
+        get {
+            return habit.tags.map { tag in
+                let habitTag = HabitTag()
+                habitTag.tag = tag.tag
+                habitTag.habitId = tag.habitId
+                habitTag._id = tag._id
+                return habitTag
+            }
+//            var tags: [HabitTag] = []
+//            for tag in habit.tags {
+//                tags.append(tag)
+//            }
+//            return tags
+        }
+    }
+
+    func addTag (_ tag: HabitTag) {
+        habit.tags.append(tag)
+        updateHabit()
+        self.objectWillChange.send()
+
+    }
+
+    func removeTag (_ tagId: ObjectId) {
+        let tagIndex = habit.tags.firstIndex { tag in
+            tag._id == tagId
+        }
+        if let tagIndex = tagIndex {
+            habit.tags.remove(at: tagIndex)
+            updateHabit()
+            print("tag removed")
+            self.objectWillChange.send()
+
+        } else {
+            // TODO: Show alert about remove is not successful
         }
     }
 
     @State var endDateToggle: Bool = false
     func setEndDateToggle(_ value: Bool) {
-        print("value is here and it is: \(value)")
         endDateToggle = value
         if !value {
             endDate = habit.startDate
         }
-        self.objectWillChange.send()
+        updateHabit()
     }
 
     func updateHabit() {

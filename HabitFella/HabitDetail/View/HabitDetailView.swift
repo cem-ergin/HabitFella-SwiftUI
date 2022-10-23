@@ -22,11 +22,36 @@ struct HabitDetailView: View {
     @State var showGoalPicker: Bool = false
     @State var showUnitPicker: Bool = false
     @State var showFrequencyPicker: Bool = false
+    @State var showTagPicker: Bool = false
 
     @State var localToggle: Bool = false
     var body: some View {
         ZStack(alignment: .bottom) {
             VStack {
+                ZStack(alignment: .topTrailing) {
+                    Image(systemName: "pencil")
+                        .font(.system(size: 12))
+                        .padding(-4)
+                    HStack {
+                        if habitDetailViewModel.tags.isEmpty {
+                            Text("NO-TAG-FOUND")
+                        } else {
+                            ForEach(habitDetailViewModel.tags, id: \._id) { tag in
+                                Text("#\(tag.tag) ")
+                            }
+                        }
+                    }
+                }
+                .overlay(
+                    RoundedRectangle(cornerRadius: 16)
+                        .stroke(habitDetailViewModel.color, lineWidth: 0.5))
+                .onTapGesture {
+                    showTagPicker = true
+                }
+                .sheet(isPresented: $showTagPicker) {
+                    HabitDetailTagPickerView(habitDetailViewModel: habitDetailViewModel)
+                }
+
                 VStack {
                     ColorPicker(selection: $habitDetailViewModel.color) {
                     }.labelsHidden()
@@ -150,11 +175,14 @@ struct HabitDetailView: View {
                 HStack {
                     Text(habitDetailViewModel.endDateToggle ? "End Date" : "")
                     if localToggle {
-                        DatePicker("Choose end date", selection: $habitDetailViewModel.endDate, displayedComponents: [.date])
+                        DatePicker(
+                            "Choose end date",
+                            selection: $habitDetailViewModel.endDate,
+                            displayedComponents: [.date]
+                        )
                     }
                     Toggle(!localToggle ? "Use end date" : "", isOn: $localToggle)
                         .onChange(of: localToggle) { newValue in
-                            print("is this not changing?")
                             habitDetailViewModel.setEndDateToggle(newValue)
                         }
                 }
