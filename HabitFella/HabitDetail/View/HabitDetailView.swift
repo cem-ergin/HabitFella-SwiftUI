@@ -7,6 +7,7 @@
 
 import SwiftUI
 import SymbolPicker
+import RealmSwift
 
 struct HabitDetailView: View {
     @EnvironmentObject var realmManager: RealmManager
@@ -235,14 +236,20 @@ struct HabitDetailView: View {
 
 struct HabitDetailView_Previews: PreviewProvider {
     static var previews: some View {
-        HabitDetailView(habitDetailViewModel: HabitDetailViewModel(Habit(value: [
-            "name": "Read a Book",
-            "icon": "book",
-            "color": HabitColor(),
-            "goalCount": 5,
-            "goalUnit": "times",
-            "goalFrequency": "Every day"
-        ]), RealmManager()))
+        let habit = Habit()
+        habit.name = "Read a Book"
+        habit.icon = "book"
+        habit.color = HabitColor()
+        habit.goalCount = 5
+        habit.goalUnit = "times"
+        habit.goalFrequency = "Every day"
+        let _tags = RealmSwift.List<HabitTag>()
+        _tags.append(objectsIn: [
+            HabitTag(value: ["tag": "tag 1"]),
+            HabitTag(value: ["tag": "tag 2"])
+        ])
+        habit.tags = _tags
+        return HabitDetailView(habitDetailViewModel: HabitDetailViewModel(habit, RealmManager()))
         .environmentObject(RealmManager())
     }
 }
