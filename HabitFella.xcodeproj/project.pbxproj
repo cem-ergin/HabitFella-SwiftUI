@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6F06C854291BF84D005A4751 /* HabitProgress.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F06C853291BF84D005A4751 /* HabitProgress.swift */; };
 		6F1360222904313B008FF6AB /* HabitDetailTagPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F1360212904313B008FF6AB /* HabitDetailTagPickerView.swift */; };
 		6F1B4FB328F75CBF00BF5313 /* RealmStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F1B4FB228F75CBF00BF5313 /* RealmStatus.swift */; };
 		6F1BD14D28EF6AC500EEB0F9 /* AddHabitViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F1BD14C28EF6AC500EEB0F9 /* AddHabitViewModel.swift */; };
@@ -74,6 +75,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		6F06C853291BF84D005A4751 /* HabitProgress.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitProgress.swift; sourceTree = "<group>"; };
 		6F1360212904313B008FF6AB /* HabitDetailTagPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitDetailTagPickerView.swift; sourceTree = "<group>"; };
 		6F1B4FB228F75CBF00BF5313 /* RealmStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmStatus.swift; sourceTree = "<group>"; };
 		6F1BD14C28EF6AC500EEB0F9 /* AddHabitViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddHabitViewModel.swift; sourceTree = "<group>"; };
@@ -442,6 +444,7 @@
 				6FAEDCF828F19C45000CD097 /* HabitTag.swift */,
 				6FAB1D9628F60CA600D3D211 /* Reminder.swift */,
 				6F1B4FB228F75CBF00BF5313 /* RealmStatus.swift */,
+				6F06C853291BF84D005A4751 /* HabitProgress.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -650,6 +653,7 @@
 				6FAB1D9728F60CA600D3D211 /* Reminder.swift in Sources */,
 				6FAEDD1928F3038B000CD097 /* NotificationManager.swift in Sources */,
 				6FECB50D28EDE957006F4FF9 /* ContentView.swift in Sources */,
+				6F06C854291BF84D005A4751 /* HabitProgress.swift in Sources */,
 				6FAEDD1628F2F6F0000CD097 /* PickerView.swift in Sources */,
 				6F1360222904313B008FF6AB /* HabitDetailTagPickerView.swift in Sources */,
 				6F1BD14D28EF6AC500EEB0F9 /* AddHabitViewModel.swift in Sources */,
