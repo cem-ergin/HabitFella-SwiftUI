@@ -171,4 +171,30 @@ class RealmManager: ObservableObject {
             return RealmResponse(isSuccess: false, message: "\(error)", createdHabitId: habit._id)
         }
     }
+
+    func addOrUpdateHabitProgress(habitProgress: HabitProgress) -> RealmResponse {
+        guard let realm = realm else {
+            return RealmResponse(isSuccess: false, message: "Couldn't open realm", createdHabitId: habitProgress._id)
+        }
+
+        do {
+            try realm.write {
+                if let _habitProgress = realm.object(ofType: HabitProgress.self, forPrimaryKey: habitProgress._id) {
+                    _habitProgress.currentGoalCount = habitProgress.currentGoalCount
+                    _habitProgress.goalCount = habitProgress.goalCount
+                    _habitProgress.date = habitProgress.date
+                    _habitProgress.isDone = habitProgress.isDone
+                    self.objectWillChange.send()
+                    return RealmResponse(isSuccess: false, message: "Habit is corrupted", createdHabitId: _habitProgress._id)
+                } else {
+                    realm.add(habitProgress)
+                    return RealmResponse(isSuccess: true, message: "HabitProgress \(habitProgress._id) added", createdHabitId: habitProgress._id)
+                }
+            }
+        } catch {
+            print("Error updating habitProgress \(habitProgress.id) to Realm: \(error)")
+            return RealmResponse(isSuccess: false, message: "\(error)", createdHabitId: habitProgress._id)
+        }
+        return RealmResponse(isSuccess: false, message: "Realm is not ready for habitProgress with id: \(habitProgress._id)", createdHabitId: habitProgress._id)
+    }
 }
