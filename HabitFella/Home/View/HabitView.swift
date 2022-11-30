@@ -75,6 +75,15 @@ struct HabitView: View {
                         animation = true
                         let dividedHeight = CGFloat(frameHeight) / CGFloat(habit.goalCount)
                         heightOfBlue = Double(dividedHeight * Double(self.currentSection))
+
+
+                        let habitProgress = HabitProgress()
+                        habitProgress.isDone = self.currentSection >= habit.goalCount 
+                        habitProgress.date = Date()
+                        habitProgress.habitId = habit._id
+                        habitProgress.goalCount = habit.goalCount
+                        habitProgress.currentGoalCount = self.currentSection
+                        _ = realmManager.addOrUpdateHabitProgress(habitProgress: habitProgress)
                     })
             )
         }.buttonStyle(PlainButtonStyle())
