@@ -84,7 +84,7 @@ class RealmManager: ObservableObject {
                 guard !habitToDelete.isEmpty else { return }
                 try realm.write {
                     realm.delete(habitToDelete)
-                   getHabits()
+                    getHabits()
                 }
             } catch {
                 print("Error deleting task \(id) to Realm: \(error)")
@@ -176,25 +176,50 @@ class RealmManager: ObservableObject {
         guard let realm = realm else {
             return RealmResponse(isSuccess: false, message: "Couldn't open realm", createdHabitId: habitProgress._id)
         }
-
         do {
-            try realm.write {
-                if let _habitProgress = realm.object(ofType: HabitProgress.self, forPrimaryKey: habitProgress._id) {
+            if let _habitProgress = realm.object(ofType: HabitProgress.self, forPrimaryKey: habitProgress._id) {
+                try realm.write {
                     _habitProgress.currentGoalCount = habitProgress.currentGoalCount
                     _habitProgress.goalCount = habitProgress.goalCount
                     _habitProgress.date = habitProgress.date
                     _habitProgress.isDone = habitProgress.isDone
-                    self.objectWillChange.send()
-                    return RealmResponse(isSuccess: false, message: "Habit is corrupted", createdHabitId: _habitProgress._id)
-                } else {
-                    realm.add(habitProgress)
-                    return RealmResponse(isSuccess: true, message: "HabitProgress \(habitProgress._id) added", createdHabitId: habitProgress._id)
+
                 }
+                self.objectWillChange.send()
+                return RealmResponse(
+                    isSuccess: false,
+                    message: "Habit is corrupted",
+                    createdHabitId: _habitProgress._id
+                )
+            } else {
+                try realm.write {
+                    realm.add(habitProgress)
+                }
+                return RealmResponse(
+                    isSuccess: true,
+                    message: "HabitProgress \(habitProgress._id) added",
+                    createdHabitId: habitProgress._id
+                )
             }
         } catch {
             print("Error updating habitProgress \(habitProgress.id) to Realm: \(error)")
-            return RealmResponse(isSuccess: false, message: "\(error)", createdHabitId: habitProgress._id)
+            return RealmResponse(
+                isSuccess: false,
+                message: "\(error)",
+                createdHabitId: habitProgress._id
+            )
         }
-        return RealmResponse(isSuccess: false, message: "Realm is not ready for habitProgress with id: \(habitProgress._id)", createdHabitId: habitProgress._id)
+    }
+
+    func getHabitProgress(habitId: ObjectId, date: Date) -> HabitProgress? {
+        guard let realm = realm else { return nil }
+
+        let habitProgress = realm.objects(HabitProgress.self).filter(NSPredicate(format: "habitId == %@", habitId))
+        guard !habitProgress.isEmpty else { return nil }
+
+        let _habitProgressToReturn = habitProgress.last { progress in
+            Calendar.current.dateComponents([.day], from: progress.date, to: date).day == 0
+        }
+        return _habitProgressToReturn
     }
 }

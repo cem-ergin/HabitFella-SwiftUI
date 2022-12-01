@@ -47,6 +47,22 @@ struct HabitView: View {
                 .animation(.easeInOut, value: animation)
                 .opacity(0.3)
             }
+            .onAppear(perform: {
+                let habitProgress = realmManager.getHabitProgress(habitId: habit._id, date: Date())
+                if habitProgress != nil {
+                    if habitProgress!.isDone {
+                        animation = true
+                        heightOfBlue = frameHeight
+                        self.currentSection = habit.goalCount
+                    } else {
+                        animation = true
+                        let currentSection = habitProgress?.currentGoalCount ?? 0
+                        let dividedHeight = CGFloat(frameHeight) / CGFloat(habit.goalCount)
+                        heightOfBlue = Double(dividedHeight * Double(currentSection))
+                        self.currentSection = currentSection
+                    }
+                }
+            })
             .clipShape(Capsule())
             .contentShape(Capsule())
             .gesture(DragGesture()
@@ -76,14 +92,14 @@ struct HabitView: View {
                         let dividedHeight = CGFloat(frameHeight) / CGFloat(habit.goalCount)
                         heightOfBlue = Double(dividedHeight * Double(self.currentSection))
 
-
                         let habitProgress = HabitProgress()
-                        habitProgress.isDone = self.currentSection >= habit.goalCount 
+                        habitProgress.isDone = self.currentSection >= habit.goalCount
                         habitProgress.date = Date()
                         habitProgress.habitId = habit._id
                         habitProgress.goalCount = habit.goalCount
                         habitProgress.currentGoalCount = self.currentSection
-                        _ = realmManager.addOrUpdateHabitProgress(habitProgress: habitProgress)
+                        let realmResponse = realmManager.addOrUpdateHabitProgress(habitProgress: habitProgress)
+                        print(realmResponse.message)
                     })
             )
         }.buttonStyle(PlainButtonStyle())
